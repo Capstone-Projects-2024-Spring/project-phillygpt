@@ -3,7 +3,7 @@
 
 <h3>Use Case 1 - Number of Related Deaths</h3>
 
-A user wants to find out the number of covid deaths within Philadelphia.
+Health researcher studying covid related deaths within Philadelphia
 <ol>
 <li>User loads the PhillyGPT website.</li>
 <li>User enters a prompt to ask the number of covid deaths.</li>
