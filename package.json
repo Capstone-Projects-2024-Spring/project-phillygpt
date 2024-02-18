@@ -1,0 +1,29 @@
+{
+  "name": "public-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.29",
+    "@types/node": "^20.11.19",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.41.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.2",
+    "vite-plugin-eslint": "^1.8.1"
+  },
+  "dependencies": {
+    "@deck.gl/carto": "^8.9.16",
+    "@deck.gl/core": "^8.9.16",
+    "axios": "^1.6.7",
+    "jquery": "^3.7.1",
+    "maplibre-gl": "^3.0.0"
+  }
+}
