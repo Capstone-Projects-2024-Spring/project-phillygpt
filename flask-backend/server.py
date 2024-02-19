@@ -31,7 +31,7 @@ def process_input():
         # Extracting the response content
         data = response.json()
 
-        # You can process the data here or pass it to the template
+        # process the data
         print(data)
         response_text = "Data retrieved from the API: {}".format(data)
     else:
