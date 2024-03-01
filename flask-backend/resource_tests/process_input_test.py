@@ -1,6 +1,6 @@
 import pytest
 
-def test_post(client):
+def test_post_user_input(client):
     """
     Test the post method of the ProcessInput resource for successful processing of user input.
     """
