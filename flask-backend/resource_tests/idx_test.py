@@ -1,9 +1,9 @@
 import pytest
 
 
-def test_get(client):
+def test_get_endpoints(client):
     """
-    Test the get function of index.py
+    Test the get function of index.py for successful endpoint data retrieval.
     """
     response = client.get("/")
     data = response.get_json()
