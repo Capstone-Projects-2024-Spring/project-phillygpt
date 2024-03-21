@@ -4,6 +4,7 @@ import Navbar from './components/navbar.jsx';
 import SearchBar from './components/searchbar.jsx';
 import DisplayArea from './components/displayArea.jsx';
 import Title from './components/title.jsx';
+import MyButton from './components/examplePromptOne.jsx';
 //import {BrowserRouter as Router, Route} from 'react-router-dom';
 import CheckClass from './components/DarkMode/checkClass.jsx';
 
@@ -33,6 +34,10 @@ function App() {
         userInput = {userInput}
         handleInputChange = {handleInputChange}
         handleButtonClick = {handleButtonClick}/>
+
+      {/*/User story 3 example prompt 1 button*/}
+      <MyButton handleButtonClick={handleButtonClick} />
+
 
       {/*Display area + Response Box*/}
       <div className="display-area-container">
