@@ -1,4 +1,5 @@
 import react from 'react';
+import CheckClass from './DarkMode/checkClass';
 
 const MyButton = () => {
     const handleButtonClick = () => {
