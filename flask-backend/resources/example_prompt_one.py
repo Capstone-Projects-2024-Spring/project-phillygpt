@@ -6,21 +6,23 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 def connect_fetch_data():
     """Connects to MySQL database and fetches data"""
+    connection = None
+
     try:
         # Connection parameters
         connection = mysql.connector.connect(
             host='ec2-3-13-209-241.us-east-2.compute.amazonaws.com',
             database='phillygpt',
-            user=' ec2-user',
+            user='ec2-user',
             password='vuwva8-vZgabt-zip5m'
         )
         logging.info("Setting MySql database connection parameters...")
 
         if connection.is_connected():
             db_info = connection.get_server_info()
-            logging.info("Connected to MySql Server vestion: %s", db_info)
+            logging.info("Connected to MySql Server version: %s", db_info)
             cursor = connection.cursor()
-            cursor.execute("SELECT * FROM education LIMIT 10;")
+            cursor.execute("SELECT * FROM Bike_Network LIMIT 10;")
             records = cursor.fetchall()
             
             for row in records:
@@ -31,7 +33,7 @@ def connect_fetch_data():
         logging.warning("Error connecting to MySql Database: %s", e)
 
     finally:
-        if connection.is_connected():
+        if connection is not None and connection.is_connected():
             cursor.close()
             connection.close()
             logging.info("MySql Connection closed.")
