@@ -32,7 +32,7 @@ const DisplayArea = () => {
          {/* Conditionally render based on the route */}
          {route === '/' || route === '/home' ? (
            <div className="example-questions-container flex flex-col items-center">
-           <h2 className={`text-center mb-4 ${isDark ? 'text-white' : 'text-black'}`}>Try these prompts:</h2>
+           <h2 className={`text-center mb-4 font-lightbold ${isDark ? 'text-white' : 'text-black'}`}>Try out these prompts:</h2>
            {exampleQuestions.map((question, index) => (
              <div key={index} className="mb-4">
                <Examples

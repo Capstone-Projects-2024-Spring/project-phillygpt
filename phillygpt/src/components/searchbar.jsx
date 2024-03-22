@@ -31,13 +31,13 @@ const SearchBar = () => {
         type="text"
         value={userInput}
         onChange={handleInputChange}
-        className={`p-2 w-2/5 h-12 rounded-l-md ${isDark ? 'text-black bg-white' : 'text-black bg-gray-300'}`}
+        className={`p-2 w-2/5 h-12 rounded-l-md 'text-black bg-gray-300'}`}
         placeholder="Ask me something..."
         style={{ borderTopRightRadius: 0, borderBottomRightRadius: 0 }}
       />
       <button
         onClick={handleButtonClick}
-        className="bg-blue-500 text-white p-2 rounded-r-md w-28 h-12"
+        className="bg-blue-500 text-white p-2 rounded-r-md w-28 h-12 font-lightbold text-mg"
         style={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
       >
         Search

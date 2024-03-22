@@ -13,7 +13,7 @@ function App() {
   
   return (
     <Router>
-      <div className={`bg-${isDark ? 'darkgray' : 'white'} min-h-screen`}>
+      <div className={`${isDark ? 'bg-darkgray' : 'bg-lm_body'} min-h-screen`}>
         <Navbar />
         <Routes>
           <Route exact path="/" element={<HomePage/>} />

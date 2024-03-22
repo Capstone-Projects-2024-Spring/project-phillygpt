@@ -10,9 +10,9 @@ const ResponsePage = () => {
 
   return (
     <div>
-      <p>User Input: {userInput}</p> {/*THIS IS FOR TESTING PURPOSES. REMOVE WHEN DONE BEFORE DEMO.*/}
       <Title route = {'/response'}/>
       <SearchBar/>
+      <p>User Input: {userInput}</p> {/*THIS IS FOR TESTING PURPOSES. REMOVE WHEN DONE BEFORE DEMO.*/}
       <div className="display-area-container">
         <DisplayArea/>
       </div>

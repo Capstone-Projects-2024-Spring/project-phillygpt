@@ -4,12 +4,14 @@ function CheckClass() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const observer = new MutationObserver((mutationsList) => {
-      mutationsList.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          setIsDark(document.documentElement.classList.contains('dark'));
-        }
-      });
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    };
+
+    checkDarkMode();
+
+    const observer = new MutationObserver(() => {
+      checkDarkMode();
     });
 
     observer.observe(document.documentElement, { attributes: true });

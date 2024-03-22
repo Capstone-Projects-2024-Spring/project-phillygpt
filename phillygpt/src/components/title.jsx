@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CheckClass from './DarkMode/checkClass';
 
 const shouldShowDescription = (route) => {
@@ -8,9 +9,12 @@ const shouldShowDescription = (route) => {
 const Title = ({ route }) => {
   const showDescription = shouldShowDescription(route);
   const isDark = CheckClass();
+
   return (
     <div>
-      <div className={`pt-20 text-${isDark ? 'white' : 'black'} text-center p-4 font-extrabold text-4xl`}>PhillyGPT</div>
+      <Link to="/" className={`block pt-20 text-${isDark ? 'white' : 'black'} text-center p-4 font-extrabold text-4xl`}>
+        PhillyGPT
+      </Link>
       {showDescription && (
         <div className={`text-${isDark ? 'white' : 'black'} text-center mb-4`}>
           This is a temporary description for PhillyGPT
