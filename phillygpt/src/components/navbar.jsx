@@ -5,7 +5,7 @@ function Navbar() {
 
     
      return (
-        <div className={`relative`}>
+        <div className={`fixed top-0 left-0 right-0 z-10`}>
             <nav className={`bg-gray-navbar text-white text-xl flex justify-between items-center gap-4 p-2`}>
                 <ul className="flex space-x-12 m-0 p-0 list-none">
                     <li className="hover:bg-gray-400 p-2">

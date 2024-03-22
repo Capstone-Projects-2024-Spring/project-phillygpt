@@ -10,7 +10,7 @@ const Title = ({ route }) => {
   const isDark = CheckClass();
   return (
     <div>
-      <div className={`text-${isDark ? 'white' : 'black'} text-center p-4 font-extrabold text-4xl`}>PhillyGPT</div>
+      <div className={`pt-20 text-${isDark ? 'white' : 'black'} text-center p-4 font-extrabold text-4xl`}>PhillyGPT</div>
       {showDescription && (
         <div className={`text-${isDark ? 'white' : 'black'} text-center mb-4`}>
           This is a temporary description for PhillyGPT

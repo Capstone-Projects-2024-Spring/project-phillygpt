@@ -2,10 +2,13 @@ import React from 'react';
 import ResponseBox from "./responsebox.jsx";
 import {useLocation} from 'react-router-dom';
 import Examples from './examples';
+import CheckClass from './DarkMode/checkClass';
 
 const DisplayArea = () => {
 
   const route = useLocation().pathname;
+
+  const isDark = CheckClass();
 
   const exampleQuestions = [
     "What farmers markets will happen this weekend?",
@@ -26,19 +29,22 @@ const DisplayArea = () => {
         <div className="map-container w-1/2 h-full bg-gray-200 mr-4 rounded-lg overflow-hidden"> 
           <img src="https://via.placeholder.com/300x200" alt="Default Map" className="w-full h-full object-cover" />
         </div>
-        {(route === '/' || route === '/home') ? <p>Suggestions</p> : route ==='/response' && <ResponseBox />}
+         {/* Conditionally render based on the route */}
+         {route === '/' || route === '/home' ? (
+           <div className="example-questions-container flex flex-col items-center">
+           <h2 className={`text-center mb-4 ${isDark ? 'text-white' : 'text-black'}`}>Try these prompts:</h2>
+           {exampleQuestions.map((question, index) => (
+             <div key={index} className="mb-4">
+               <Examples
+                 text={question}
+                 onClick={() => handleQuestionClick(question)}
+               />
+             </div>
+           ))}
+         </div>
+        ) : route === '/response' && <ResponseBox />}
       </div>
-      {/* Rendering the example questions using the Examples component */}
-      <div className="example-questions-container flex flex-wrap justify-center items-center gap-10 mx-10 my-10">
-        {exampleQuestions.map((question, index) => (
-          <Examples
-            key={index} 
-            text={question}
-            onClick={() => handleQuestionClick(question)}
-          />
-        ))}
       </div>
-    </div>
   );
 }
 
