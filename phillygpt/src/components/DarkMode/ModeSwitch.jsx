@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/16/solid';
 
 const ModeSwitch = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(document.documentElement.classList.contains('dark'));
 
   useEffect(() => {
     const htmlElement = document.documentElement;
