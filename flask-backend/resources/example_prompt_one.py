@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import mysql.connector
 from mysql.connector import Error
 from sshtunnel import SSHTunnelForwarder
@@ -8,6 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 app = Flask(__name__)
+CORS(app)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 print(os.environ.get("SSH_PRIVATE_KEY"))
 
