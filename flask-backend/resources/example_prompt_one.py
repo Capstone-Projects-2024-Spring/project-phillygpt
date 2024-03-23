@@ -20,19 +20,6 @@ def connect_fetch_data():
     data = []
 
     try:
-        # # SSH tunnel parameters
-        # ssh_host = 'ec2-3-13-209-241.us-east-2.compute.amazonaws.com'
-        # ssh_port = 22
-        # ssh_username = 'ec2-user'
-        # ssh_private_key = r'C:\Users\andrewto\.ssh\phillygpt.pem'
-
-        # # MySQL database parameters
-        # mysql_host = 'phillygptdb1.czgma8k2kt6g.us-east-2.rds.amazonaws.com'
-        # mysql_port = 3306
-        # mysql_username = 'admin'
-        # mysql_password = 'vuwva8-vZgabt-zip5m'
-        # mysql_db = 'phillygpt'
-
         # SSH tunnel parameters
         ssh_host = os.getenv('SSH_HOST')
         ssh_port = int(os.getenv('SSH_PORT', 22))  # Default to port 22 if not specified
