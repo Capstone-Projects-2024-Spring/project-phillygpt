@@ -68,6 +68,10 @@ const DisplayArea = () => {
 
   // State to store the API response
   const [apiResponse, setApiResponse] = useState(null);
+  const [sqlResponse, setSqlResponse] = useState(null);
+
+  //comment this function out when backend is connected
+  /*
 
   const handleQuestionClick = (questionText) => {
     console.log(`Question clicked: ${questionText}`);
@@ -84,13 +88,71 @@ const DisplayArea = () => {
         });
     }
   };
+  */
+  const handleQuestionClick = (questionText) => {
+    console.log('Sending this data to the server:', { user_input: questionText });
+    generateSqlFromOpenAI(questionText).then(sqlQuery => {
+      // Set the SQL query in state so it can be passed to ResponseBox
+      setSqlResponse(sqlQuery);
+      //executeSqlQuery(sqlQuery);
+    });
+  };
+  
+  const generateSqlFromOpenAI = (questionText) => {
+    return fetch('http://127.0.0.1:5000/process_input', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user_input: questionText }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Extract the SQL query from the "OPENAI_RESPONSE" key
+      return data.OPENAI_RESPONSE;
+    })
+    .catch(error => {
+      console.error('Error generating SQL from OpenAI: ', error);
+      // Handle any errors, possibly updating the state to display an error message
+    });
+  };
+  
+  
+  
+
+
+  const executeSqlQuery = (sqlQuery) => {
+    fetch('http://127.0.0.1:5000/execute_query', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ sql_query: sqlQuery }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Update the state with the response data
+      setApiResponse(data);
+    })
+    .catch(error => {
+      console.error('Error executing SQL query: ', error);
+      // Handle any errors
+      setApiResponse(null);
+    });
+  };
+  
 
   return (
     <div className="display-area-container mx-8 mt-8 mb-4">
       <div className="display-area flex justify-center items-center">
         <div className="map-container w-1/2 h-full bg-gray-200 mr-4 rounded-lg overflow-hidden">
           {/* Display API response here */}
-          <ResponseBox response={apiResponse} />
+          <ResponseBox response={apiResponse} sqlQuery={sqlResponse}  />
         </div>
          {/* Conditionally render based on the route */}
          {route === '/' || route === '/home' ? (

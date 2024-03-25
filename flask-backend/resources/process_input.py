@@ -24,7 +24,7 @@ class ProcessInput(Resource):
         """
         
         #get user input
-        user_input = request.form.get("user_input")
+        user_input = request.json.get("user_input")
         response = self.openai_request(user_input)
     
         return jsonify({"USER_INPUT" : user_input, 
@@ -61,4 +61,10 @@ class ProcessInput(Resource):
         ],
         temperature=1
     )
-        return response.choices[0].message.content 
+        sql_query = response.choices[0].message.content
+        # Remove triple backticks from start and end if present
+        if sql_query.startswith('```') and sql_query.endswith('```'):
+            sql_query = sql_query[3:-3].strip()  # Strip leading and trailing whitespace
+
+        # Return the cleaned SQL query
+        return sql_query

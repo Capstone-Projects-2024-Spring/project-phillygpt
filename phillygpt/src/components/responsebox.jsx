@@ -1,7 +1,7 @@
 import React from 'react';
 import CheckClass from './DarkMode/checkClass';
 
-const ResponseBox = ({ response }) => {
+const ResponseBox = ({ response, sqlQuery }) => {
   const isDark = CheckClass();
 
   // Function to format each record for display
@@ -34,7 +34,7 @@ const ResponseBox = ({ response }) => {
       <div className="sql-query-section mb-4">
         <h2 className="text-xl mb-2">SQL Query</h2>
         <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`}>
-          <p>Text for SQL Query should be put here.</p>
+        <p>{sqlQuery || "SQL query will be displayed here."}</p>
         </div>
       </div>
 
