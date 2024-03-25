@@ -38,11 +38,25 @@ class ProcessInput(Resource):
         user_input (string): User's prompt for generating SQL query.
         Returns: Generated SQL query as a String.
         """
+        table_schema = """
+        Table Name: FarmersMarkets
+        Columns:
+        objectid: Integer
+        X: Float
+        Y: Float
+        name: String
+        address: String
+        zip: Integer
+        hours_mon_start: Time
+        hours_mon_end: Time
+        ...
+        season_closing_day: Integer
+        """
 
         response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "Generate a SQL Query for a database based on the user input. Only give the SQL Statement and nothing more."}, #THIS WILL NEED TO BE MODIFIED.
+            {"role": "system", "content": "Given the schema of a database table containing information about farmers' markets, including their location, hours of operation, and seasonality, generate a SQL query that addresses the user's request. Provide only the SQL statement."}, #THIS WILL NEED TO BE MODIFIED.
             {"role": "user", "content": user_input},
         ],
         temperature=1
