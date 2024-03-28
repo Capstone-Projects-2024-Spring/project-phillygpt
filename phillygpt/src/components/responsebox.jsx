@@ -13,15 +13,6 @@ const ResponseBox = ({ response }) => {
     return Object.keys(firstRecord);
   };
 
-
-
-  // Function to format each record for display
-  const formatRecord = (record) => {
-    // Assuming record structure: [id, longitude, latitude, marketName, address, zipCode]
-    const [id, longitude, latitude, marketName, address, zipCode] = record;
-    return `${marketName}, ${address}, ZIP: ${zipCode}`;
-  };
-
   return (
     <div className={`response-container w-1/2 h-full ${isDark ? 'bg-gray-navbar' : 'bg-responsebg'} rounded-lg border border-gray-400 p-4 ${isDark ? 'text-white' : 'text-black'}`}>
       {/* Dynamic Response Section for Displaying Market Data */}
@@ -29,11 +20,11 @@ const ResponseBox = ({ response }) => {
         <h2 className="text-xl mb-2">Market Data</h2>
         <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg overflow-y-auto`}>
           {response && Array.isArray(response) && response.length > 0 ? (
-            <table>
+            <table className="w-full border-collapse">
               <thead>
                 <tr>
                   {generateTableHeaders().map((header, index) => (
-                    <th key={index}>{header}</th>
+                    <th key={index} className="border border-gray-400 p-2 font-bold">{header}</th>
                   ))}
                 </tr>
               </thead>
@@ -41,7 +32,7 @@ const ResponseBox = ({ response }) => {
                 {response.map((record, index) => (
                   <tr key={index}>
                     {generateTableHeaders().map((header, index) => (
-                      <td key={index}>{record[header]}</td>
+                      <td key={index} className="border border-gray-400 p-2">{record[header]}</td>
                     ))}
                   </tr>
                 ))}
