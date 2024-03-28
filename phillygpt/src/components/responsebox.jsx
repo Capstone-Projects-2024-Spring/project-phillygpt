@@ -18,7 +18,7 @@ const ResponseBox = ({ response }) => {
       {/* Dynamic Response Section for Displaying Market Data */}
       <div className="response-section mb-4">
         <h2 className="text-xl mb-2">Market Data</h2>
-        <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`} style={{ maxHeight: '400px', overflow: 'auto' }}>
+        <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`} style={{ maxHeight: '250px', overflow: 'auto' }}>
           {response && Array.isArray(response) && response.length > 0 ? (
             <div style={{ maxWidth: '100%', overflow: 'auto' }}>
               <table className="w-full table-auto border-collapse">
