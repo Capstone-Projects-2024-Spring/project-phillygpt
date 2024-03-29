@@ -6,11 +6,8 @@ from resources.index import Index
 from resources.process_input import ProcessInput
 from flask_cors import CORS
 from dotenv import load_dotenv
-import os
 import logging
 from flask import request
-from sshtunnel import SSHTunnelForwarder
-import mysql.connector
 from mysql.connector import Error
 from logging.handlers import RotatingFileHandler
 #init
@@ -36,7 +33,7 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Flask application startup')
 
-
+'''
 # Utility function for establishing an SSH tunnel and connecting to the database
 def connect_fetch_data(sql_query):
     """Connects to MySQL database through SSH tunnel and fetches data"""
@@ -78,8 +75,7 @@ def connect_fetch_data(sql_query):
             password=mysql_password,
             database=mysql_db
         )
-       
-
+        
         if connection.is_connected():
             app.logger.info("Connected to MySql through SSH tunnel.")
             db_info = connection.get_server_info()
@@ -108,7 +104,7 @@ def connect_fetch_data(sql_query):
             logging.info("SSH tunnel closed.")
     
     return data
-
+'''
 # Add a new route in your Flask application
 @app.route('/execute_query', methods=['POST'])
 def execute_query():
