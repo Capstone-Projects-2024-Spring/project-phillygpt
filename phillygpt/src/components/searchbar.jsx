@@ -1,27 +1,36 @@
 import React from 'react';
-import CheckClass from './DarkMode/checkClass';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const SearchBar = () => {
 
-  const isDark = CheckClass();
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState('');
-  
+
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   };
 
   const handleButtonClick = () => {
     console.log(userInput);
-    if (userInput.trim() === 'ERROR') { //CHANGE WHEN BACKEND IS CONNECTED. SHOULD BE REPLACED WITH CHATGPT ERROR PROMPT.
+    if (userInput.trim() === 'ERROR') { //ENGINEER THE PROMPT TO RESPOND ONLY WITH 'ERROR' WHEN DATA IS NOT FOUND IN THE ANY TABLES.
       navigate('/reprompt');
     }
     else if(userInput.trim() ===""){
+      //Do nothing with empty input
     }
     else {
-      navigate(`/response?input=${encodeURIComponent(userInput)}`); //REPLACE WITH CHATGPT RESPONSE. 
+
+      axios.post('http://127.0.0.1:5000/process_input', {user_input : userInput})
+        .then(response => {
+          const data = response.data;
+          console.log(response.data);
+          navigate(`/response?input=${encodeURIComponent(userInput)}`);
+        })
+        .catch(error => {
+          console.error('Error: ', error);
+        })
     }
   };
   
