@@ -56,15 +56,6 @@ const ResponseBox = ({ response }) => {
         </div>
       </div>
 
-      {/* Static Sections (for future dynamic content once backend is connected) */}
-      <hr className={`${isDark ? 'border-white' : 'border-black'} my-4`} />
-      <div className="sql-query-section mb-4">
-        <h2 className="text-xl mb-2">SQL Query</h2>
-        <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`}>
-          <p>Text for SQL Query should be put here.</p>
-        </div>
-      </div>
-
       <hr className={`${isDark ? 'border-white' : 'border-black'} my-4`} />
       <div className="tables-accessed-section">
         <h2 className="text-xl mb-2">Tables Accessed</h2>
