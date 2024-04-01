@@ -24,7 +24,8 @@ class ProcessInput(Resource):
         """
         
         #get user input
-        user_input = request.form.get("user_input")
+        data = request.get_json()
+        user_input = data.get("user_input")
         response = self.openai_request(user_input)
     
         return jsonify({"USER_INPUT" : user_input, 
@@ -38,13 +39,18 @@ class ProcessInput(Resource):
         user_input (string): User's prompt for generating SQL query.
         Returns: Generated SQL query as a String.
         """
-
-        response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": "Generate a SQL Query for a database based on the user input. Only give the SQL Statement and nothing more."}, #THIS WILL NEED TO BE MODIFIED.
-            {"role": "user", "content": user_input},
-        ],
-        temperature=1
-    )
-        return response.choices[0].message.content 
+        if not user_input:
+            print(user_input)
+            return "User input is empty."
+        try:
+            response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "Generate a SQL Query for a database based on the user input. Only give the SQL Statement and nothing more."}, #THIS WILL NEED TO BE MODIFIED.
+                {"role": "user", "content": user_input},
+            ],
+            temperature=1
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            return f"Error from OpenAI: {e}"
