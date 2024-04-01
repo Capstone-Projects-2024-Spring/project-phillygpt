@@ -2,12 +2,14 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useContext } from 'react';
+import { LoadingContext } from './loadingCtx';
 
 const SearchBar = () => {
 
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState('');
-
+  const {setLoading} = useContext(LoadingContext);
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   };
@@ -21,17 +23,27 @@ const SearchBar = () => {
       //Do nothing with empty input
     }
     else {
+      //TEST LOADING COMPONENT
+      // setLoading(true);
+      // setTimeout(() => {
+      //   setLoading(false);
+      // }, 2000);
 
+      setLoading(true);
       axios.post('http://127.0.0.1:5000/process_input', {user_input : userInput})
         .then(response => {
-          const data = response.data;
           console.log(response.data);
           navigate(`/response?input=${encodeURIComponent(userInput)}`);
+          setLoading(false);
         })
         .catch(error => {
           console.error('Error: ', error);
+          setLoading(false);
         })
-    }
+        .finally(() => {
+          setLoading(false);
+        });
+    };
   };
   
   return (
