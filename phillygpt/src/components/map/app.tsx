@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {createRoot} from 'react-dom/client';
 //import { useLocation } from 'react-router-dom';
 import Title from '../title';
@@ -27,11 +27,34 @@ const mapContainerStyle = {
   height: '100vh',
 };
 const center = {
-  lat: 7.2905715, // default latitude
-  lng: 80.6337262, // default longitude
+  lat: 40, // default latitude
+  lng: -75, // default longitude
+};
+
+const createMarker = (record) => {
+  // Assuming record structure: [id, longitude, latitude, marketName, address, zipCode]
+  const [id, longitude, latitude, marketName, address, zipCode] = record;
+  return {
+    longitude,
+    latitude,
+    text: `${marketName}, ${address}, ZIP: ${zipCode}`
+  };
 };
 
 const MapPage = () => {
+  const [apiResponse, setApiResponse] = useState(null);
+  fetch('http://127.0.0.1:5000/data')
+        .then(response => response.json())
+        .then(data => {
+          setApiResponse(data);
+        })
+        .catch(error => {
+          console.error('Error fetching data: ', error);
+          setApiResponse(null);
+        });
+  
+
+
 
 
   //const location = useLocation();
@@ -53,12 +76,16 @@ const MapPage = () => {
     setMap(null)
   }, [])
   
-  let Markers: marker[] = [
-    { "longitude": -82, "latitude":34, "text": "This worked"},
-    { "longitude": -90, "latitude":34, "text": "This worked"},
-    { "longitude": -95, "latitude":34, "text": "This worked"},
-    { "longitude": -100, "latitude":34, "text": "This worked"}
-];
+//   let Markers: marker[] = [
+//     { "longitude": -82, "latitude":34, "text": "This worked"},
+//     { "longitude": -90, "latitude":34, "text": "This worked"},
+//     { "longitude": -95, "latitude":34, "text": "This worked"},
+//     { "longitude": -100, "latitude":34, "text": "This worked"}
+// ];
+
+//let Markers: marker[] = []; // Initialize with an empty array
+
+const Markers: marker[] = (apiResponse as unknown as marker[])?.map(createMarker) ?? [];
 
   return isLoaded ? (
     <>
