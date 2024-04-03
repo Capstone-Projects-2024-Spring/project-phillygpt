@@ -31,3 +31,16 @@ COPY flask-backend /app/flask-backend
 # Install python dependencies
 COPY flask-backend/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy environment variables
+COPY .env /app/flask-backend
+
+# Serve backend
+ENV FLASK_APP=flask-backend/example_prompt_one.python
+ENV FLASK_RUN_HOST=0.0.0.0
+
+# Declare port to expose
+EXPOSE 5000
+
+# Run flask
+CMD ["flask", "run"]
