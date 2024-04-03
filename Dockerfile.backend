@@ -23,5 +23,5 @@ ENV FLASK_RUN_HOST=0.0.0.0
 # Expose the port the app runs on
 EXPOSE 5000
 
-# Command to run the Flask application
+# Command to run the Flask applications
 CMD ["flask", "run"]
