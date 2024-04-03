@@ -36,7 +36,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY .env /app/flask-backend
 
 # Serve backend
-ENV FLASK_APP=flask-backend/example_prompt_one.python
+ENV FLASK_APP=flask-backend/resources/example_prompt_one.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 # Declare port to expose
