@@ -6,6 +6,7 @@ import ResponsePage from './pages/response.jsx';
 import RepromptPage from './pages/reprompt.jsx';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import CheckClass from './components/DarkMode/checkClass.jsx';
+import MapPage from './components/map/app.tsx';
 import { LoadingProvider } from './components/loadingCtx.jsx';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/home" element={<HomePage/>} />
             <Route path="/response" element={<ResponsePage/>} />
             <Route path="/reprompt" element={<RepromptPage/>} />
+            <Route path="/map" element={<MapPage/>} />
           </Routes>
         </div>
       </Router>
