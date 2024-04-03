@@ -55,6 +55,9 @@ def create_db_connection():
     )
 
 def initialize_connection():
+    """
+    Initialize all connections
+    """
     try:
         create_ssh_tunnel()
         create_db_connection()
@@ -62,8 +65,8 @@ def initialize_connection():
     except Error as e:
         logging.error("Failed to establish SSH tunnel or database connection: %s", e)
 
-@app.route('/data', methods=['GET'])
-def get_data():
+@app.route('/example1', methods=['GET'])
+def get_example1():
     initialize_connection()
 
     data = []
@@ -71,6 +74,25 @@ def get_data():
         if connection.is_connected():
             cursor = connection.cursor()
             cursor.execute("SELECT * FROM farmers_markets_location LIMIT 100;")
+            records = cursor.fetchall()
+            for row in records:
+                data.append(row[:6])
+    except Error as e:
+        logging.warning("Error fetching data: %s", e)
+    finally:
+        if cursor:
+            cursor.close()
+    return jsonify(data)
+
+@app.route('/example2', methods=['GET'])
+def get_dexample2():
+    initialize_connection()
+
+    data = []
+    try:
+        if connection.is_connected():
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM farmers_markets_location LIMIT 5;")
             records = cursor.fetchall()
             for row in records:
                 data.append(row[:6])
