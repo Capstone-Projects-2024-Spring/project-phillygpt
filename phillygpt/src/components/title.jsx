@@ -17,7 +17,7 @@ const Title = ({ route }) => {
       </Link>
       {showDescription && (
         <div className={`text-${isDark ? 'white' : 'black'} text-center mb-4`}>
-          This is a temporary description for PhillyGPT
+          A gateway to effortless data-driven insights about Philadelphia
         </div>
       )}
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import DarkModeSwitch from './DarkMode/ModeSwitch.jsx';
+import ModeSwitch from './DarkMode/ModeSwitch.jsx';
 import CheckClass from './DarkMode/checkClass.jsx';
 
 function Navbar() {
@@ -23,7 +23,7 @@ function Navbar() {
                     </li>
                 </ul>
                 
-                <DarkModeSwitch />
+                <ModeSwitch />
             </nav>
             <div className={`${isDark ? 'bg-white' : 'bg-black'} h-0.5 w-full absolute bottom-0 left-0`}></div>
         </div>
