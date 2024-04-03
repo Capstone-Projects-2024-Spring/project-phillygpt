@@ -5,7 +5,7 @@ FROM node:16-alpine as build-stage
 WORKDIR /app/phillygpt
 
 # Copy package dependencies for react into frontend directory inside container
-COPY phillygpt/package.json package-lock.json ./
+COPY phillygpt/package.json phillygpt/package-lock.json ./
 
 # Install dependencies
 RUN npm install
