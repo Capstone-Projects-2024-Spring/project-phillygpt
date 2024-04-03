@@ -1,46 +1,29 @@
-# Stage 1: Build React Application
+# Stage 1: Build the React Application
 FROM node:16-alpine as build-stage
 
-# Create frontend directory inside container
-WORKDIR /app/phillygpt
+# Create working dir
+WORKDIR /app
 
-# Copy package dependencies for react into frontend directory inside container
+# Copy frontend dependencies
 COPY phillygpt/package.json phillygpt/package-lock.json ./
 
-# Install dependencies
+# Install
 RUN npm install
 
-# Copy rest of frontend files
+# Copy the rest of react fiels
 COPY phillygpt/ ./
 
 # Build frontend
 RUN npm run build
 
-# Stage 2: Setup Python environment
-FROM python:3.10-slim
+# Stage 2: Serve the React Application
+FROM nginx:alpine
 
-# Establish new working directory
-WORKDIR /app
+# Copy the build output to replace the default nginx contents
+COPY --from=build-stage /app/build /usr/share/nginx/html
 
-# Fetch built react application from first stage
-COPY --from=build-stage /app/phillygpt/build /app/phillygpt/build
+# Expose port 80 for the web server
+EXPOSE 80
 
-# Copy flask files to container
-COPY flask-backend /app/flask-backend
-
-# Install python dependencies
-COPY flask-backend/requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy environment variables
-COPY .env /app/flask-backend
-
-# Serve backend
-ENV FLASK_APP=flask-backend/resources/example_prompt_one.py
-ENV FLASK_RUN_HOST=0.0.0.0
-
-# Declare port to expose
-EXPOSE 5000
-
-# Run flask
-CMD ["flask", "run"]
+# Start nginx with global directives and daemon off
+CMD ["nginx", "-g", "daemon off;"]
