@@ -14,8 +14,8 @@ const DisplayArea = () => {
 
   const exampleQuestions = [
     "What farmers markets will happen this weekend?",
-    "What time is the Head House square farmers market open?",
-    "How many farmers markets will there be on the weekdays?",
+    "Can you show me how many people are vaccinated within Philly?",
+    "Can you show me a list of bike stations?",
     "What time does the Rittenhouse Square farmers market end?",
   ];
 

@@ -65,44 +65,6 @@ def initialize_connection():
     except Error as e:
         logging.error("Failed to establish SSH tunnel or database connection: %s", e)
 
-@app.route('/example1', methods=['GET'])
-def get_example1():
-    initialize_connection()
-
-    data = []
-    try:
-        if connection.is_connected():
-            cursor = connection.cursor()
-            cursor.execute("SELECT * FROM farmers_markets_location LIMIT 100;")
-            records = cursor.fetchall()
-            for row in records:
-                data.append(row[:6])
-    except Error as e:
-        logging.warning("Error fetching data: %s", e)
-    finally:
-        if cursor:
-            cursor.close()
-    return jsonify(data)
-
-@app.route('/example2', methods=['GET'])
-def get_dexample2():
-    initialize_connection()
-
-    data = []
-    try:
-        if connection.is_connected():
-            cursor = connection.cursor()
-            cursor.execute("SELECT * FROM farmers_markets_location LIMIT 5;")
-            records = cursor.fetchall()
-            for row in records:
-                data.append(row[:6])
-    except Error as e:
-        logging.warning("Error fetching data: %s", e)
-    finally:
-        if cursor:
-            cursor.close()
-    return jsonify(data)
-
 def close_connection(exception):
     global tunnel, connection
     if connection and connection.is_connected():
@@ -111,6 +73,88 @@ def close_connection(exception):
     if tunnel and tunnel.is_active:
         tunnel.stop()
         logging.info("SSH tunnel closed.")
+
+@app.route('/example1', methods=['GET'])
+def get_example1():
+    initialize_connection()
+    data = []
+
+    try:
+        if connection.is_connected():
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM farmers_markets_location LIMIT 100;")
+            records = cursor.fetchall()
+            for row in records:
+                data.append(row[:6])
+
+    except Error as e:
+        logging.warning("Error fetching data: %s", e)
+
+    finally:
+        if cursor:
+            cursor.close()
+
+    return jsonify(data)
+
+@app.route('/example2', methods=['GET'])
+def get_example2():
+    """
+    Results are in form of:
+
+    Partially vaccinated
+    Fully vaccinated
+    Boosted
+    """
+
+    initialize_connection()
+    data = []
+    
+    try:
+        if connection.is_connected():
+            cursor = connection.cursor()
+            cursor.execute("SELECT * FROM covid_vaccine_totals;")
+            records = cursor.fetchall()
+            for row in records:
+                data.append(row)
+
+    except Error as e:
+        logging.warning("Error fetching data: %s", e)
+
+    finally:
+        if cursor:
+            cursor.close()
+
+    results = [['Partially vaccinated'],['Fully vaccinated'],['Boosted']]
+
+    for i in range(len(data[0])):
+        results[i].append(data[0][i])
+
+    return jsonify(results)
+
+@app.route('/example3', methods=['GET'])
+def get_example3():
+    initialize_connection()
+    data = []
+    
+    try:
+        if connection.is_connected():
+            cursor = connection.cursor()
+            query = "SELECT * FROM Bike_Network LIMIT 10;"
+            cursor.execute(query)
+            data = cursor.fetchall()
+            records = cursor.fetchall()
+            for row in records:
+                data.append(row)
+
+    except Error as e:
+        logging.warning("Error fetching data: %s", e)
+
+    finally:
+        if cursor:
+            cursor.close()
+
+    return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
