@@ -155,6 +155,30 @@ def get_example3():
 
     return jsonify(data)
 
+@app.route('/example4', methods=['GET'])
+def get_example4():
+    initialize_connection()
+    data = []
+    
+    try:
+        if connection.is_connected():
+            cursor = connection.cursor()
+            query = "SELECT * FROM universities_colleges;"
+            cursor.execute(query)
+            data = cursor.fetchall()
+            records = cursor.fetchall()
+            for row in records:
+                data.append(row)
+
+    except Error as e:
+        logging.warning("Error fetching data: %s", e)
+
+    finally:
+        if cursor:
+            cursor.close()
+
+    return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

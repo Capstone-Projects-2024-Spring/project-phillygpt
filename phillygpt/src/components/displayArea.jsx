@@ -16,7 +16,7 @@ const DisplayArea = () => {
     "What farmers markets will happen this weekend?",
     "Can you show me how many people are vaccinated within Philly?",
     "Can you show me a list of bike stations?",
-    "What time does the Rittenhouse Square farmers market end?",
+    "Can you list college buildings around the city?",
   ];
 
   const handleQuestionClick = (questionText) => {
