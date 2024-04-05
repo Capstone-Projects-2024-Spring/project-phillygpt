@@ -8,6 +8,14 @@ In the project directory, you can run:
 
 ### `npm start`
 
+If you get an error with @react-google-maps/api then run: 
+
+### yarn add @react-google-maps/api
+
+If ou have an issue with npm install try:
+
+### npm install --force
+
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
