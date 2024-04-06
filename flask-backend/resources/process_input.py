@@ -6,6 +6,8 @@ import json
 from dotenv import load_dotenv
 from resources.database_connection import get_database_uri
 from resources.prompts import SYSTEM_MESSAGE
+from resources.validate_sql_query import validate_sql_query
+
 
 # Load .env file
 load_dotenv()
@@ -49,6 +51,7 @@ class ProcessInput(Resource):
             table_name = self.determine_proper_table(user_input)
             #should only run this code if table name is properly found
             if table_name is None:
+                #maybe reprompt here??
                 print("Table not found")
             else:
                 formatted_system_message = SYSTEM_MESSAGE.format(schema=schemas[table_name])
@@ -61,7 +64,13 @@ class ProcessInput(Resource):
                     ],
                     temperature=1
                 )
-                return response.choices[0].message.content
+                generated_query = response.choices[0].message.content
+
+                if not validate_sql_query(self, generated_query):
+                    print("Potential SQL injection detected!")
+                    return None  # Do not return the query
+                
+                return generated_query
         except Exception as e:
             return f"Error from OpenAI: {e}"
 
