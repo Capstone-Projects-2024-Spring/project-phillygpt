@@ -2,6 +2,7 @@ from flask import request, jsonify
 from flask_restful import Resource
 from openai import OpenAI
 import os
+import json
 from dotenv import load_dotenv
 from resources.database_connection import get_database_uri
 from resources.prompts import SYSTEM_MESSAGE
@@ -46,17 +47,21 @@ class ProcessInput(Resource):
         try:
             # Determine the proper table based on the schema and user input
             table_name = self.determine_proper_table(user_input)
-            formatted_system_message = SYSTEM_MESSAGE.format(schema=schemas[table_name])
+            #should only run this code if table name is properly found
+            if table_name is None:
+                print("Table not found")
+            else:
+                formatted_system_message = SYSTEM_MESSAGE.format(schema=schemas[table_name])
 
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": formatted_system_message},
-                    {"role": "user", "content": user_input},
-                ],
-                temperature=1
-            )
-            return response.choices[0].message.content
+                response = client.chat.completions.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": formatted_system_message},
+                        {"role": "user", "content": user_input},
+                    ],
+                    temperature=1
+                )
+                return response.choices[0].message.content
         except Exception as e:
             return f"Error from OpenAI: {e}"
 
@@ -69,7 +74,7 @@ class ProcessInput(Resource):
             The name of the table that best answers the user input.
         """
         # Create a prompt including the database schema
-        prompt = f"Determine which table has information that can best answer the user's question. ONLY RETURN NAME OF TABLE. Available tables are: "
+        prompt = f"Determine which table has information that can best answer the user's question. You must always output your answer in JSON format with the following key-value pairs:- table: the table you found based on user_input - error: an error message if the query is invalid, or null if the query is valid. Available tables are: "
         for table_name in schemas:
             prompt += f"{table_name}, "
         prompt = prompt[:-2]  # Remove the trailing comma and space
@@ -83,6 +88,18 @@ class ProcessInput(Resource):
             ],
             temperature=1
         )
+
+        json_response = json.loads(response.choices[0].message.content)
+
+        error_message = json_response.get("error")
+
+        if error_message is None:
+            table_name = json_response.get("table")
+            return table_name
+        else:
+             # If there's an error, print the error message
+            print(f"Error determining proper table: {error_message}")
+            return None
 
         # Extract the selected table from the OpenAI response
         selected_table = response.choices[0].message.content
