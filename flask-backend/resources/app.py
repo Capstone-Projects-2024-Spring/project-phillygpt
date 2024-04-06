@@ -112,5 +112,22 @@ def close_connection(exception):
         tunnel.stop()
         logging.info("SSH tunnel closed.")
 
+
+  from flask import jsonify
+
+# Define reprompt suggestions
+reprompt_suggestions = [
+    "Try refining your search terms.",
+    "Check for any spelling mistakes.",
+    "Consider using different keywords.",
+    "Explore related topics.",
+    "Use specific filters to narrow down results."
+]
+
+@app.route('/reprompt_suggestions', methods=['GET'])
+def get_reprompt_suggestions():
+    return jsonify(reprompt_suggestions)
+      
+
 if __name__ == '__main__':
     app.run(debug=True)

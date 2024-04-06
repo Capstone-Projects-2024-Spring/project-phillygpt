@@ -9,12 +9,15 @@ const RepromptPage = () => {
   const userInput = new URLSearchParams(location.search).get('input');
   const isDark = CheckClass();
 
-  const suggestions = [
-    "Check your spelling and try again.",
-    "Try using different keywords.",
-    "Refine your search query for better results.",
-    "Use more specific keywords.",
-  ];
+  const [suggestions, setSuggestions] = useState([]);
+  useEffect(() => {
+    // Fetch reprompt suggestions from the backend
+    fetch('/reprompt_suggestions')
+      .then(response => response.json())
+      .then(data => setSuggestions(data))
+      .catch(error => console.error('Error fetching reprompt suggestions:', error));
+  }, []);
+
   return (
     <div>
       <Title route = {'/reprompt'}/>
@@ -22,9 +25,9 @@ const RepromptPage = () => {
       <div className="suggestion-prompt-container">
         <div className={`text-${isDark ? 'white' : 'black'} text-center mb-4 font-lightbold`}> We're unable to find what you're looking for, here are some suggestions to improve your prompt. </div>
         {/* REPLACE WITH SUGGESTIONS*/}
-        <ul className="list-disc ml-8">
+        <ul>
           {suggestions.map((suggestion, index) => (
-            <li key={index} className={`text-${isDark ? 'white' : 'black'} mb-2`}>{suggestion}</li>
+            <li key={index}>{suggestion}</li>
           ))}
         </ul>
       </div>
