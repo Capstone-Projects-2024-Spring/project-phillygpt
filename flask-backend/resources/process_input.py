@@ -34,7 +34,11 @@ class ProcessInput(Resource):
         data = request.get_json()
         user_input = data.get("user_input")
         response = self.openai_request(user_input)
-        return jsonify({"USER_INPUT": user_input, "OPENAI_RESPONSE": response})
+
+        if response:
+            return jsonify({"status": "success", "USER_INPUT": user_input, "OPENAI_RESPONSE": response})
+        else:
+            return jsonify({"status": "error", "message": "An error occurred during processing."})
 
     def openai_request(self, user_input):
         """
