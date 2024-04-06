@@ -113,7 +113,6 @@ def close_connection(exception):
         logging.info("SSH tunnel closed.")
 
 
-  from flask import jsonify
 
 # Define reprompt suggestions
 reprompt_suggestions = [

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { useLocation } from 'react-router-dom';
 import Title from '../components/title';
 import SearchBar from '../components/searchbar';
