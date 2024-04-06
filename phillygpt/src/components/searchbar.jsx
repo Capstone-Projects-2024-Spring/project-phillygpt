@@ -41,6 +41,7 @@ const SearchBar = () => {
             navigate(`/response?input=${encodeURIComponent(userInput)}`);
           } else {
             setStatus('An error occurred during processing.');
+            navigate('/reprompt')
           }
           setLoading(false);
         })
