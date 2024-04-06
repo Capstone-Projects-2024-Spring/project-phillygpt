@@ -109,7 +109,3 @@ class ProcessInput(Resource):
              # If there's an error, print the error message
             print(f"Error determining proper table: {error_message}")
             return None
-
-        # Extract the selected table from the OpenAI response
-        selected_table = response.choices[0].message.content
-        return selected_table
