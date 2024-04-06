@@ -46,7 +46,7 @@ def get_database_uri():
                 cursor.close()
                 connection.close()
                 
-                return uri, schema_representation
+                return schema_representation
 
     except Error as e:
         print("Error connecting to MySQL database:", e)
