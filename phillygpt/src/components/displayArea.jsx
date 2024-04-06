@@ -5,12 +5,14 @@ import Examples from './examples';
 import CheckClass from './DarkMode/checkClass';
 import Loading from './loading.jsx';
 import { useContext } from 'react';
-import { LoadingContext } from './loadingCtx.jsx';
+import { LoadingContext } from './contex/loadingCtx.jsx';
+import { responseSQLCtx } from './contex/responseCtx.jsx';
 const DisplayArea = () => {
 
   const route = useLocation().pathname;
   const isDark = CheckClass();
   const {isLoading, setLoading} = useContext(LoadingContext); 
+  const {responseSQLData} = useContext(responseSQLCtx);
 
   const exampleQuestions = [
     "What farmers markets will happen this weekend?",
@@ -53,7 +55,7 @@ const DisplayArea = () => {
                 </div>
               ))}
             </div>
-          ) : route === '/response' && <ResponseBox />}
+          ) : route === '/response' && <ResponseBox responseSQL = {responseSQLData}/>}
         </>
       )}
       </div>

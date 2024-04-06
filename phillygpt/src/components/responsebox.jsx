@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CheckClass from './DarkMode/checkClass';
+import { responseSQLCtx } from './contex/responseCtx';
 
 const ResponseBox = ({ response }) => {
   const isDark = CheckClass();
-
+  const getResponseSQL = useContext(responseSQLCtx);
+  console.log(getResponseSQL);
   // Function to dynamically generate table headers based on record keys
   const generateTableHeaders = () => {
     if (!response || !Array.isArray(response) || response.length === 0) {
@@ -52,7 +54,7 @@ const ResponseBox = ({ response }) => {
       <div className="sql-query-section mb-4">
         <h2 className="text-xl mb-2">SQL Query</h2>
         <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`}>
-          <p>Text for SQL Query should be put here.</p>
+          <p>{getResponseSQL.responseDataSQL}</p>
         </div>
       </div>
 
