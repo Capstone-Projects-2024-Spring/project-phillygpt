@@ -43,7 +43,7 @@ const ResponseBox = ({ response }) => {
               </table>
             </div>
           ) : (
-            <p>Awaiting market data...</p>
+            <p>Awaiting data...</p>
           )}
         </div>
       </div>
