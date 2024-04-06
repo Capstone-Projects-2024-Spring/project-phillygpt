@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import CheckClass from './DarkMode/checkClass';
-import { responseSQLCtx } from './contex/responseCtx';
+import { responseCtx } from './contex/responseCtx';
 
 const ResponseBox = ({ response }) => {
   const isDark = CheckClass();
-  const getResponseSQL = useContext(responseSQLCtx);
+  const getResponseSQL = useContext(responseCtx);
   console.log(getResponseSQL);
   // Function to dynamically generate table headers based on record keys
   const generateTableHeaders = () => {

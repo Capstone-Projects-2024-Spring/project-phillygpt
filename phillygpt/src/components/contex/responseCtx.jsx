@@ -1,14 +1,14 @@
 import React, {createContext, useState} from 'react';
 
-export const responseSQLCtx = createContext();
+export const responseCtx = createContext();
 
-export const ResponseSQLProvider = ({ children }) => {
+export const ResponseProvider = ({ children }) => {
 
     const [responseDataSQL, setResponseDataSQL] = useState(null);
 
     return(
-        <responseSQLCtx.Provider value={{ responseDataSQL, setResponseDataSQL }}>
+        <responseCtx.Provider value={{ responseDataSQL, setResponseDataSQL }}>
             {children}
-        </responseSQLCtx.Provider>
+        </responseCtx.Provider>
     )
 }

@@ -8,14 +8,14 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import CheckClass from './components/DarkMode/checkClass.jsx';
 import MapPage from './components/map/app.tsx';
 import { LoadingProvider } from './components/contex/loadingCtx.jsx';
-import { ResponseSQLProvider } from './components/contex/responseCtx.jsx';
+import { ResponseProvider } from './components/contex/responseCtx.jsx';
 
 function App() {
 
   const isDark = CheckClass(); //This is to check for dark mode vs not
   
   return (
-    <ResponseSQLProvider>
+    <ResponseProvider>
       <LoadingProvider>
         <Router>
           <div className={`${isDark ? 'bg-darkgray' : 'bg-lm_body'} min-h-screen`}>
@@ -30,7 +30,7 @@ function App() {
           </div>
         </Router>
       </LoadingProvider>
-    </ResponseSQLProvider>
+    </ResponseProvider>
   );
 }
 
