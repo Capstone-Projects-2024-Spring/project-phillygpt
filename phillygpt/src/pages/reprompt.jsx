@@ -42,6 +42,7 @@ import CheckClass from '../components/DarkMode/checkClass';
 
 const RepromptPage = () => {
   const location = useLocation();
+  const userInput = new URLSearchParams(location.search).get('input');
   const [suggestions, setSuggestions] = useState([]);
   const isDark = CheckClass();
 
@@ -52,7 +53,7 @@ const RepromptPage = () => {
 
   const fetchSuggestions = async () => {
     try {
-      const response = await fetch('/get_suggestions'); // Update the route based on backend
+      const response = await fetch('http://localhost:3000'); // Update the route based on backend
       if (!response.ok) {
         throw new Error('Failed to fetch suggestions');
       }

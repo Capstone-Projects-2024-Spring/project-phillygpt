@@ -115,7 +115,7 @@ def close_connection(exception):
 @app.route('/get_suggestions', methods=['GET'])
 def get_suggestions():
     # generate suggestions
-    suggestions = ['Try different keywords', 'Refine your search criteria', 'Check for typos']
+    suggestions = ['Suggestion 1', 'Suggestion 2', 'Suggestion 3']
     return jsonify({'suggestions': suggestions}) 
 
 if __name__ == '__main__':
