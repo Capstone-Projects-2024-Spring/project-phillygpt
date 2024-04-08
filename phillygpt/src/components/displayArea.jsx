@@ -5,12 +5,14 @@ import Examples from './examples';
 import CheckClass from './DarkMode/checkClass';
 import Loading from './loading.jsx';
 import { useContext } from 'react';
-import { LoadingContext } from './loadingCtx.jsx';
+import { LoadingContext } from './contex/loadingCtx.jsx';
+import { responseCtx } from './contex/responseCtx.jsx';
 const DisplayArea = () => {
 
   const route = useLocation().pathname;
   const isDark = CheckClass();
   const {isLoading, setLoading} = useContext(LoadingContext); 
+  const {responseSQLData} = useContext(responseCtx);
 
   const exampleQuestions = [
     "What farmers markets will happen this weekend?",
@@ -25,6 +27,7 @@ const DisplayArea = () => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
+    
     
     // Implement more logic for when an example question is clicked
     // For now a console log is okay
@@ -53,7 +56,7 @@ const DisplayArea = () => {
                 </div>
               ))}
             </div>
-          ) : route === '/response' && <ResponseBox />}
+          ) : route === '/response' && <ResponseBox responseSQL = {responseSQLData}/>}
         </>
       )}
       </div>
