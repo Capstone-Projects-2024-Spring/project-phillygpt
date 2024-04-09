@@ -23,8 +23,8 @@ interface marker{
 }
 
 const mapContainerStyle = {
-  width: '100vw',
-  height: '100vh',
+  width: '400px',
+  height: '400px',
 };
 const center = {
   lat: 40, // default latitude
@@ -60,14 +60,14 @@ const MapPage = () => {
   //const location = useLocation();
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyBa9H1h96caf0tMY0ICdlVpj9f92ePeCpk"
+    googleMapsApiKey: "AIzaSyATW--vWST36NCIU7dsehSwd-9RNZhrSNg"
   })
 
   const [map, setMap] = React.useState(null)
 
   const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
+    
+    map.setZoom(2)
 
     setMap(map)
   }, [])
@@ -92,7 +92,7 @@ const Markers: marker[] = (apiResponse as unknown as marker[])?.map(createMarker
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
-        zoom={10}
+        
         onLoad={onLoad}
         onUnmount={onUnmount}
       >

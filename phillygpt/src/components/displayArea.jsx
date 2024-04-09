@@ -7,6 +7,7 @@ import Loading from './loading.jsx';
 import { useContext } from 'react';
 import { LoadingContext } from './contex/loadingCtx.jsx';
 import { responseCtx } from './contex/responseCtx.jsx';
+import MapPage from './map/app.tsx';
 const DisplayArea = () => {
 
   const route = useLocation().pathname;
@@ -41,7 +42,7 @@ const DisplayArea = () => {
         {isLoading ? (<Loading />) : (
         <>
           <div className="map-container w-1/2 h-full bg-gray-200 mr-4 rounded-lg overflow-hidden">
-            <img src="https://via.placeholder.com/300x200" alt="Default Map" className="w-full h-full object-cover" />
+            <MapPage/>
           </div>
           {/* Conditionally render based on the route */}
           {route === '/' || route === '/home' ? (
