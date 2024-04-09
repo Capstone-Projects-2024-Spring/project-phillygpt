@@ -41,7 +41,7 @@ const DisplayArea = () => {
         
         {isLoading ? (<Loading />) : (
         <>
-          <div className="map-container w-1/2 h-full bg-gray-200 mr-4 rounded-lg overflow-hidden">
+          <div className="map-container w-1/2 w-[900px] h-[600px] bg-gray-200 mr-4 rounded-lg overflow-hidden">
             <MapPage/>
           </div>
           {/* Conditionally render based on the route */}
