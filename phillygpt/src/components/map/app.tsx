@@ -20,9 +20,10 @@ interface marker{
 }
 
 const mapContainerStyle = {
-  width: '48.3vw',
-  height: '65vh',
+  width: '907px',
+  height: '650px',
 };
+
 const center = {
   lat: 39.9526, // default latitude for philadelphia
   lng: -75.1652, // default longitude for philadelphia
