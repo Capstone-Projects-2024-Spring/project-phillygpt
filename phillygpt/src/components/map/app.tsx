@@ -20,8 +20,8 @@ interface marker{
 }
 
 const mapContainerStyle = {
-  width: '907px',
-  height: '650px',
+  width: '48.3vw',
+  height: '65vh',
 };
 
 const center = {
