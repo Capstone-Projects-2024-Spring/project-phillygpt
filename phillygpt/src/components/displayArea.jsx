@@ -5,18 +5,21 @@ import Examples from './examples';
 import CheckClass from './DarkMode/checkClass';
 import Loading from './loading.jsx';
 import { useContext } from 'react';
-import { LoadingContext } from './loadingCtx.jsx';
+import { LoadingContext } from './contex/loadingCtx.jsx';
+import { responseCtx } from './contex/responseCtx.jsx';
+import MapPage from './map/app.tsx';
 const DisplayArea = () => {
 
   const route = useLocation().pathname;
   const isDark = CheckClass();
   const {isLoading, setLoading} = useContext(LoadingContext); 
+  const {responseSQLData} = useContext(responseCtx);
 
   const exampleQuestions = [
     "What farmers markets will happen this weekend?",
-    "What time is the Head House square farmers market open?",
-    "How many farmers markets will there be on the weekdays?",
-    "What time does the Rittenhouse Square farmers market end?",
+    "Can you show me how many people are vaccinated within Philly?",
+    "Can you show me a list of bike stations?",
+    "Can you list college buildings around the city?",
   ];
 
   const handleQuestionClick = (questionText) => {
@@ -25,6 +28,7 @@ const DisplayArea = () => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
+    
     
     // Implement more logic for when an example question is clicked
     // For now a console log is okay
@@ -38,7 +42,7 @@ const DisplayArea = () => {
         {isLoading ? (<Loading />) : (
         <>
           <div className="map-container w-1/2 h-full bg-gray-200 mr-4 rounded-lg overflow-hidden">
-            <img src="https://via.placeholder.com/300x200" alt="Default Map" className="w-full h-full object-cover" />
+            <MapPage/>
           </div>
           {/* Conditionally render based on the route */}
           {route === '/' || route === '/home' ? (
@@ -53,7 +57,7 @@ const DisplayArea = () => {
                 </div>
               ))}
             </div>
-          ) : route === '/response' && <ResponseBox />}
+          ) : route === '/response' && <ResponseBox responseSQL = {responseSQLData}/>}
         </>
       )}
       </div>

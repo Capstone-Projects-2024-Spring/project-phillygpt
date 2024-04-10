@@ -3,13 +3,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useContext } from 'react';
-import { LoadingContext } from './loadingCtx';
+import { LoadingContext } from './contex/loadingCtx';
+import { responseCtx } from './contex/responseCtx';
 
 const SearchBar = () => {
 
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState('');
   const {setLoading} = useContext(LoadingContext);
+  const {setResponseDataSQL} = useContext(responseCtx);
+
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   };
@@ -38,6 +41,7 @@ const SearchBar = () => {
         .then(response => {
           console.log(response.data);
           if (response.data.status === "success") {
+            setResponseDataSQL(response.data.OPENAI_RESPONSE);
             navigate(`/response?input=${encodeURIComponent(userInput)}`);
           } else {
             setStatus('An error occurred during processing.');
