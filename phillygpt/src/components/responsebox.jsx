@@ -54,7 +54,9 @@ const ResponseBox = ({ response }) => {
       <div className="sql-query-section mb-4">
         <h2 className="text-xl mb-2">SQL Query</h2>
         <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`}>
-          <p>{getResponseSQL.responseDataSQL}</p>
+        {getResponseSQL.responseDataSQL && (
+      <p>{JSON.parse(getResponseSQL.responseDataSQL).query}</p>
+    )}
         </div>
       </div>
 
