@@ -43,7 +43,11 @@ const ResponseBox = ({ response }) => {
               </table>
             </div>
           ) : (
-            <p>Awaiting data...</p>
+           <div>
+            {getResponseSQL.responseDataSQL && (
+      <p>{JSON.parse(getResponseSQL.responseDataSQL).result}</p>
+    )}
+           </div>
           )}
         </div>
       </div>

@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from resources.database_connection import get_database_uri
 from resources.prompts import SYSTEM_MESSAGE
 from resources.validate_sql_query import validate_sql_query
-
+from resources.execute_sql_query import execute_sql_query
 
 # Load .env file
 load_dotenv()
@@ -35,8 +35,17 @@ class ProcessInput(Resource):
         user_input = data.get("user_input")
         response = self.openai_request(user_input)
 
+        json_response = json.loads(response)
+        generated_query = json_response.get("query")
+
         if response:
-            return jsonify({"status": "success", "USER_INPUT": user_input, "OPENAI_RESPONSE": response})
+            # Execute SQL query
+            result = execute_sql_query(generated_query)
+            if result:
+                response["result"] = result
+                return jsonify({"status": "success", "USER_INPUT": user_input, "OPENAI_RESPONSE": response})
+            else:
+                return jsonify({"status": "error", "message": "Error executing SQL query."})
         else:
             return jsonify({"status": "error", "message": "An error occurred during processing."})
 
