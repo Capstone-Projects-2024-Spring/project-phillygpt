@@ -13,5 +13,5 @@ __pycache__
 #API Keys/Tokens
 .env
 
-#virtual enviornment
+#virtual environment
 venv
