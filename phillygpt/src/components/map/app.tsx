@@ -23,8 +23,8 @@ interface marker{
 }
 
 const mapContainerStyle = {
-  width: '400px',
-  height: '400px',
+  width: '907px',
+  height: '600px',
 };
 const center = {
   lat: 40, // default latitude
@@ -42,16 +42,16 @@ const createMarker = (record) => {
 };
 
 const MapPage = () => {
-  const [apiResponse, setApiResponse] = useState(null);
-  fetch('http://127.0.0.1:5000/data')
-        .then(response => response.json())
-        .then(data => {
-          setApiResponse(data);
-        })
-        .catch(error => {
-          console.error('Error fetching data: ', error);
-          setApiResponse(null);
-        });
+  // const [apiResponse, setApiResponse] = useState(null);
+  // fetch('http://127.0.0.1:5000/data')
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         setApiResponse(data);
+  //       })
+  //       .catch(error => {
+  //         console.error('Error fetching data: ', error);
+  //         setApiResponse(null);
+  //       });
   
 
 
