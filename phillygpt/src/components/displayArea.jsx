@@ -8,12 +8,16 @@ import { useContext } from 'react';
 import { LoadingContext } from './contex/loadingCtx.jsx';
 import { responseCtx } from './contex/responseCtx.jsx';
 import MapPage from './map/app.tsx';
-const DisplayArea = () => {
+import SearchBar from './searchbar.jsx';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
+const DisplayArea = () => {
+  const navigate = useNavigate();
   const route = useLocation().pathname;
   const isDark = CheckClass();
   const {isLoading, setLoading} = useContext(LoadingContext); 
-  const {responseSQLData} = useContext(responseCtx);
+  const {setResponseDataSQL, responseSQLData} = useContext(responseCtx);
 
   const exampleQuestions = [
     "What farmers markets will happen this weekend?",
@@ -22,17 +26,25 @@ const DisplayArea = () => {
     "Can you list college buildings around the city?",
   ];
 
-  const handleQuestionClick = (questionText) => {
-    //simulate loading
-    setLoading(true);
-    setTimeout(() => {
+  const handleQuestionClick = async (questionText) => {
+    try {
+      setLoading(true);
+      const response = await axios.post('http://127.0.0.1:5000/process_input', {
+        user_input: questionText,
+      });
+      setResponseDataSQL(response.data.OPENAI_RESPONSE);
       setLoading(false);
-    }, 2000);
+      navigate(`/response?input=${encodeURIComponent(questionText)}`);
+    }
     
-    
-    // Implement more logic for when an example question is clicked
-    // For now a console log is okay
-    console.log(`Question clicked: ${questionText}`);
+    catch (error) {
+      console.error('Error:', error);
+      setLoading(false);
+    }
+
+    finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,13 +61,10 @@ const DisplayArea = () => {
             <div className="example-questions-container flex flex-col items-center">
               <h2 className={`text-center mb-4 font-lightbold ${isDark ? 'text-white' : 'text-black'}`}>Try out these prompts:</h2>
               {exampleQuestions.map((question, index) => (
-                <div key={index} className="mb-4">
-                  <Examples
-                    text={question}
-                    onClick={() => handleQuestionClick(question)}
-                  />
-                </div>
-              ))}
+              <div key={index} className="mb-4">
+                <Examples text={question} onClick={() => handleQuestionClick(question)} />
+              </div>
+            ))}
             </div>
           ) : route === '/response' && <ResponseBox responseSQL = {responseSQLData}/>}
         </>
