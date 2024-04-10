@@ -41,15 +41,15 @@ const createMarker = (record) => {
 
 const MapPage = () => {
   const [apiResponse, setApiResponse] = useState<any>(null);
-  fetch('http://127.0.0.1:5000/data')
-        .then(response => response.json())
-        .then(data => {
-          setApiResponse(data);
-        })
-        .catch(error => {
-          console.error('Error fetching data: ', error);
-          setApiResponse(null);
-        });
+  // fetch('http://127.0.0.1:5000/data')
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         setApiResponse(data);
+  //       })
+  //       .catch(error => {
+  //         console.error('Error fetching data: ', error);
+  //         setApiResponse(null);
+  //       });
   
 
 
