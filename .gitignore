@@ -9,9 +9,7 @@
 .env.production.local
 __pycache__
 .pytest_cache
+yarn.lock
 
 #API Keys/Tokens
 .env
-
-#virtual enviornment
-venv

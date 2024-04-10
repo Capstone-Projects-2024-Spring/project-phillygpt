@@ -17,6 +17,10 @@ const SearchBar = () => {
     setUserInput(event.target.value);
   };
 
+  const setStatus = (message) => {
+    console.log('Status:', message);
+  };
+
   const handleButtonClick = () => {
     console.log(userInput);
     if (userInput.trim() === 'ERROR') { //ENGINEER THE PROMPT TO RESPOND ONLY WITH 'ERROR' WHEN DATA IS NOT FOUND IN THE ANY TABLES.
@@ -36,12 +40,18 @@ const SearchBar = () => {
       axios.post('http://127.0.0.1:5000/process_input', {user_input : userInput})
         .then(response => {
           console.log(response.data);
-          setResponseDataSQL(response.data.OPENAI_RESPONSE);
-          navigate(`/response?input=${encodeURIComponent(userInput)}`);
+          if (response.data.status === "success") {
+            setResponseDataSQL(response.data.OPENAI_RESPONSE);
+            navigate(`/response?input=${encodeURIComponent(userInput)}`);
+          } else {
+            setStatus('An error occurred during processing.');
+            navigate('/reprompt')
+          }
           setLoading(false);
         })
         .catch(error => {
           console.error('Error: ', error);
+          setStatus('An error occurred during processing.');
           setLoading(false);
         })
         .finally(() => {
