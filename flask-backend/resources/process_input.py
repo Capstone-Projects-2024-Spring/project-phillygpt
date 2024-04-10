@@ -59,6 +59,8 @@ class ProcessInput(Resource):
                 print("Table not found")
                 return None
             else:
+                with open('output.txt', 'w') as f:
+                    f.write(SYSTEM_MESSAGE.format(schema=schemas[table_name]))
                 formatted_system_message = SYSTEM_MESSAGE.format(schema=schemas[table_name])
 
                 response = client.chat.completions.create(
@@ -88,7 +90,7 @@ class ProcessInput(Resource):
             The name of the table that best answers the user input.
         """
         # Create a prompt including the database schema
-        prompt = f"Determine which table has information that can best answer the user's question. You must always output your answer in JSON format with the following key-value pairs:- table: the table you found based on user_input - error: an error message if the query is invalid, or null if the query is valid. Available tables are: Bike_Network, City_Landmarks, citywide_arrests, covid_vaccine_totals, covid_vaccines_by_age, covid_vaccines_by_race, covid_vaccines_by_sex, covid_vaccines_by_zip, farmers_markets_location, universities_colleges"
+        prompt = f"Determine which table has information that can best answer the user's question. You must always output your answer in JSON format with the following key-value pairs:- table: the table you found based on user_input - error: an error message if the query is invalid, or null if the query is valid. You must select from these tables: Bike_Network, City_Landmarks, citywide_arrests, covid_vaccine_totals, covid_vaccines_by_age, covid_vaccines_by_race, covid_vaccines_by_sex, covid_vaccines_by_zip, farmers_markets_location, universities_colleges"
 
         # Call OpenAI API to determine the proper table
         response = client.chat.completions.create(

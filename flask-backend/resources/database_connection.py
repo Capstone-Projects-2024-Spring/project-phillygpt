@@ -73,9 +73,12 @@ def get_schema_representation(cursor):
             column_type = column[1]
             column_details[column_name] = column_type
         
+        # Add table name as a column in the dictionary
+        column_details['table_name'] = table_name
         db_schema[table_name] = column_details
     
     return db_schema
+
 
 if __name__ == "__main__":
     database_uri, schema_representation = get_database_uri()
