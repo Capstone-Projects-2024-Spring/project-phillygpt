@@ -18,6 +18,7 @@ const DisplayArea = () => {
   const isDark = CheckClass();
   const {isLoading, setLoading} = useContext(LoadingContext); 
   const {responseSQLData} = useContext(responseCtx);
+  const {setResponseDataSQL} = useContext(responseCtx);
   const {resultSQLData} = useContext(responseCtx);
 
   const exampleQuestions = [
