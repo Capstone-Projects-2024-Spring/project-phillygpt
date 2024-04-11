@@ -1,8 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {createRoot} from 'react-dom/client';
-//import { useLocation } from 'react-router-dom';
-import Title from '../title';
-
 
 import {
   useJsApiLoader,
@@ -23,12 +20,13 @@ interface marker{
 }
 
 const mapContainerStyle = {
-  width: '907px',
+  width: '900px',
   height: '600px',
 };
+
 const center = {
-  lat: 40, // default latitude
-  lng: -75, // default longitude
+  lat: 39.9526, // default latitude for philadelphia
+  lng: -75.1652, // default longitude for philadelphia
 };
 
 const createMarker = (record) => {
@@ -67,7 +65,7 @@ const MapPage = () => {
 
   const onLoad = React.useCallback(function callback(map) {
     
-    map.setZoom(2)
+    map.setZoom(10)
 
     setMap(map)
   }, [])
@@ -93,7 +91,7 @@ const Markers: marker[] = [];
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
-        
+
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
