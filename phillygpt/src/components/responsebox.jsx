@@ -4,14 +4,17 @@ import { responseCtx } from './contex/responseCtx';
 
 const ResponseBox = ({ response }) => {
   const isDark = CheckClass();
-  const getResponseSQL = useContext(responseCtx);
-  console.log(getResponseSQL);
+  const { responseDataSQL } = useContext(responseCtx);
+
+  // Parse the JSON string into an object
+  const parsedResponse = JSON.parse(responseDataSQL);
+
   // Function to dynamically generate table headers based on record keys
   const generateTableHeaders = () => {
-    if (!response || !Array.isArray(response) || response.length === 0) {
+    if (!parsedResponse || !Array.isArray(parsedResponse) || parsedResponse.length === 0) {
       return [];
     }
-    const firstRecord = response[0];
+    const firstRecord = parsedResponse[0];
     return Object.keys(firstRecord);
   };
 
@@ -21,40 +24,24 @@ const ResponseBox = ({ response }) => {
       <div className="response-section mb-4">
         <h2 className="text-xl mb-2">Response</h2>
         <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`} style={{ maxHeight: '250px', overflow: 'auto' }}>
-          {response && Array.isArray(response) && response.length > 0 ? (
+          {parsedResponse && parsedResponse.length > 0 ? (
             <div style={{ maxWidth: '100%', overflow: 'auto' }}>
-              <table className="w-full table-auto border-collapse">
-                <thead>
-                  <tr>
-                    {generateTableHeaders().map((header, index) => (
-                      <th key={index} className="border border-gray-400 p-2 font-bold">{header}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {response.map((record, index) => (
-                    <tr key={index}>
-                      {generateTableHeaders().map((header, index) => (
-                        <td key={index} className="border border-gray-400 p-2">{record[header]}</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {parsedResponse.map((item, index) => (
+                <p key={index}>{item}</p>
+              ))}
             </div>
           ) : (
             <p>Awaiting data...</p>
           )}
         </div>
       </div>
-  
 
       {/* Static Sections (for future dynamic content once backend is connected) */}
       <hr className={`${isDark ? 'border-white' : 'border-black'} my-4`} />
       <div className="sql-query-section mb-4">
         <h2 className="text-xl mb-2">SQL Query</h2>
         <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`}>
-          <p>{getResponseSQL.responseDataSQL ? JSON.parse(getResponseSQL.responseDataSQL).query : "Awaiting user input..."}</p>
+          <p>{responseDataSQL ? parsedResponse.query : "Awaiting user input..."}</p>
         </div>
       </div>
 

@@ -85,27 +85,27 @@ const MapPage = () => {
 
 //let Markers: marker[] = []; // Initialize with an empty array
 
-const Markers: marker[] = (apiResponse as unknown as marker[])?.map(createMarker) ?? [];
+// const Markers: marker[] = //(apiResponse as unknown as marker[])?.map(createMarker) ?? [];
 
-  return isLoaded ? (
-    <>
-      <GoogleMap
-        mapContainerStyle={mapContainerStyle}
-        center={center}
+//   return isLoaded ? (
+//     <>
+//       <GoogleMap
+//         mapContainerStyle={mapContainerStyle}
+//         center={center}
         
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
+//         onLoad={onLoad}
+//         onUnmount={onUnmount}
+//       >
         
         
-        <div>
-        {Markers.map((marker) => <MarkerWithInfowindow longitude = {marker.longitude} latitude = {marker.latitude} text = {marker.text}/>)}
-        </div>
-       {/* <MarkerWithInfowindow longitude = {-80} latitude = {20} text = {"TEST"}/> */}
+//         <div>
+//         {Markers.map((marker) => <MarkerWithInfowindow longitude = {marker.longitude} latitude = {marker.latitude} text = {marker.text}/>)}
+//         </div>
+//        {/* <MarkerWithInfowindow longitude = {-80} latitude = {20} text = {"TEST"}/> */}
 
-      </GoogleMap>
-    </>
-  ) : <></>
+//       </GoogleMap>
+//     </>
+//   ) : <></>
 };
 
 export default MapPage;

@@ -12,6 +12,7 @@ const SearchBar = () => {
   const [userInput, setUserInput] = useState('');
   const {setLoading} = useContext(LoadingContext);
   const {setResponseDataSQL} = useContext(responseCtx);
+  const {setResultDataSQL} = useContext(responseCtx);
 
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
@@ -42,6 +43,8 @@ const SearchBar = () => {
           console.log(response.data);
           if (response.data.status === "success") {
             setResponseDataSQL(response.data.OPENAI_RESPONSE);
+            setResultDataSQL(response.data.RESULT);
+            console.log(response.data.RESULT);
             navigate(`/response?input=${encodeURIComponent(userInput)}`);
           } else {
             setStatus('An error occurred during processing.');
