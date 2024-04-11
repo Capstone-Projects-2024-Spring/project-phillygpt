@@ -85,7 +85,8 @@ const MapPage = () => {
 
 //let Markers: marker[] = []; // Initialize with an empty array
 
-const Markers: marker[] = (apiResponse as unknown as marker[])?.map(createMarker) ?? [];
+//const Markers: marker[] = (apiResponse as unknown as marker[])?.map(createMarker) ?? [];
+const Markers: marker[] = [];
 
   return isLoaded ? (
     <>
@@ -109,16 +110,6 @@ const Markers: marker[] = (apiResponse as unknown as marker[])?.map(createMarker
 };
 
 export default MapPage;
-
-// export function renderToDom(container: HTMLElement) {
-//   const root = createRoot(container);
-
-//   root.render(
-//     <React.StrictMode>
-//       <MapPage />
-//     </React.StrictMode>
-//   );
-// }
 
 function CreateMarkers(Markers: any): JSX.Element {
   return <>{
