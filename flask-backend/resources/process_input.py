@@ -36,10 +36,10 @@ class ProcessInput(Resource):
         user_input = data.get("user_input")
         response = self.openai_request(user_input)
 
-        json_load = json.loads(response)
-        query_value = json_load["query"]
-
         if response:
+            json_load = json.loads(response)
+            query_value = json_load["query"]
+            
             result = execute_sql_query(query_value)
             return jsonify({"status": "success", "USER_INPUT": user_input, "OPENAI_RESPONSE": response, "RESULT": result})
         else:

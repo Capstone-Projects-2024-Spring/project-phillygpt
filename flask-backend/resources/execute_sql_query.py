@@ -23,7 +23,7 @@ def execute_sql_query(sql_query):
 
             if connection.is_connected():
                 cursor = connection.cursor()
-                cursor.execute("SELECT NAME, ADDRESS FROM City_Landmarks;")
+                cursor.execute(sql_query)
                 result = cursor.fetchall()
                 connection.commit()
                 return result
