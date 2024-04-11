@@ -17,7 +17,8 @@ const DisplayArea = () => {
   const route = useLocation().pathname;
   const isDark = CheckClass();
   const {isLoading, setLoading} = useContext(LoadingContext); 
-  const {setResponseDataSQL, responseSQLData} = useContext(responseCtx);
+  const {responseSQLData} = useContext(responseCtx);
+  const {resultSQLData} = useContext(responseCtx);
 
   const exampleQuestions = [
     "What farmers markets will happen this weekend?",
