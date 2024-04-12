@@ -8,7 +8,6 @@ import { useContext } from 'react';
 import { LoadingContext } from './contex/loadingCtx.jsx';
 import { responseCtx } from './contex/responseCtx.jsx';
 import MapPage from './map/app.tsx';
-import SearchBar from './searchbar.jsx';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +19,7 @@ const DisplayArea = () => {
   const {responseSQLData} = useContext(responseCtx);
   const {setResponseDataSQL} = useContext(responseCtx);
   const {resultSQLData} = useContext(responseCtx);
+  const {setResultDataSQL} = useContext(responseCtx);
 
   const exampleQuestions = [
     "What farmers markets will happen this weekend?",
@@ -35,6 +35,7 @@ const DisplayArea = () => {
         user_input: questionText,
       });
       setResponseDataSQL(response.data.OPENAI_RESPONSE);
+      setResultDataSQL(response.data.RESULT);
       setLoading(false);
       navigate(`/response?input=${encodeURIComponent(questionText)}`);
     }
@@ -68,7 +69,7 @@ const DisplayArea = () => {
               </div>
             ))}
             </div>
-          ) : route === '/response' && <ResponseBox responseSQL = {responseSQLData}/>}
+          ) : route === '/response' && <ResponseBox responseSQL = {responseSQLData} resultSQL={resultSQLData} />}
         </>
       )}
       </div>

@@ -1,9 +1,19 @@
-import React from 'react';
-import SearchBar from '../components/searchbar.jsx';
-import DisplayArea from '../components/displayArea.jsx';
-import Title from '../components/title.jsx';
+// src/pages/home.jsx
+import React, { useEffect, useState } from 'react';
+import SearchBar from '../components/searchbar';
+import DisplayArea from '../components/displayArea';
+import Title from '../components/title';
+import { useLocation } from 'react-router-dom';
 
 const HomePage = () => {
+  const location = useLocation();
+  const [initialInput, setInitialInput] = useState('');
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const inputFromUrl = searchParams.get('input');
+    if (inputFromUrl) setInitialInput(inputFromUrl);
+  }, [location.search]);
 
   return (
     <div>
@@ -11,11 +21,11 @@ const HomePage = () => {
       <Title route={'/'} />
 
       {/*SearchBar + Button*/}
-      <SearchBar/>
+      <SearchBar initialInput={initialInput} />
 
       {/*Display area + Response Box*/}
       <div className="display-area-container">
-        <DisplayArea/>
+        <DisplayArea />
       </div>
     </div>
   );

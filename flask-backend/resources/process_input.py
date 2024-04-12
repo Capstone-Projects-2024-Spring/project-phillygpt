@@ -48,7 +48,11 @@ class ProcessInput(Resource):
             query_value = json_load["query"]
             
             result = execute_sql_query(query_value)
-            return jsonify({"status": "success", "USER_INPUT": user_input, "OPENAI_RESPONSE": response, "RESULT": result})
+
+            if result: 
+                return jsonify({"status": "success", "USER_INPUT": user_input, "OPENAI_RESPONSE": response, "RESULT": result})
+            else:
+                return jsonify({"status": "error", "message": "An error occurred during result."})
         else:
             return jsonify({"status": "error", "message": "An error occurred during processing."})
 
