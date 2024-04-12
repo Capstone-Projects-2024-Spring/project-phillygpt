@@ -30,6 +30,7 @@ def execute_sql_query(sql_query):
 
     except Error as e:
         print(f"Error executing SQL query: {e}")
+        return None
 
     finally:
         if connection and connection.is_connected():

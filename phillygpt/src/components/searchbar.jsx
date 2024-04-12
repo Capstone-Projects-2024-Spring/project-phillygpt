@@ -55,6 +55,7 @@ const SearchBar = () => {
         .catch(error => {
           console.error('Error: ', error);
           setStatus('An error occurred during processing.');
+          navigate('/reprompt')
           setLoading(false);
         })
         .finally(() => {
