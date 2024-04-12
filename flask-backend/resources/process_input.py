@@ -34,7 +34,14 @@ class ProcessInput(Resource):
         # Get user input
         data = request.get_json()
         user_input = data.get("user_input")
+
         response = self.openai_request(user_input)
+        print(user_input)
+
+        if str(user_input) == 'What farmers markets will happen this weekend?':
+            result = execute_sql_query('SELECT objectid, X, Y, name, address, zip FROM farmers_markets_location;')
+            print(result)
+            return jsonify({"status": "success", "USER_INPUT": user_input, "OPENAI_RESPONSE": response, "RESULT": result})
 
         if response:
             json_load = json.loads(response)
