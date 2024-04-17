@@ -3,34 +3,32 @@
 
 <h3>Use Case 1 - Citizens in Philadelphia Vaccinated by Age</h3>
 
-A graduate student wants to do some COVID-19 research.
+A user wants to do research on COVID-19 research.
 <ol>
-<li>User enters a prompt to ask the number of Philadelphia citizens vaccinated aged 18-24.</li>
+<li>User enters a prompt to ask the number of Philadelphia citizens vaccinated by age group.</li>
 <li>User submits the prompt.</li>
 <li>The website dynamically updates with information relating to the users requested prompt.</li>
-<li>A table is displayed showing the number of Philadelphia citizens aged 18-24 that are vaccinated against COVID-19 within Philadelphia.</li>
+<li>A table is displayed showing the number of Philadelphia citizens that are vaccinated against COVID-19 within Philadelphia in respect to their age group.</li>
 </ol>
 
-<h3>Use Case 2 - Heat Map of Crime</h3>
+<h3>Use Case 2 - Citywide Arrests for Aggravated Assault</h3>
 
-A user wants to find view a heat map of violent crime within North Philadelphia and do further research based on the result
+A user wants to know how many people were arrested in 2023 for aggravated assault.
 <ol>
-<li>User loads the PhillyGPT website</li>
-<li>User enters a prompt to ask for a heat map of violent crimes in North Philadelphia</li>
-<li>User submits the prompt </li>
-<li>The website displays a map showing a heat map of violent crimes committed in North Philadelphia</li>
-<li>The user decides to refine the prompt for the heat map to only show violent crime within North Philadelphia only in 2022</li>
-<li>The website displays a heat map showing the number of violent crimes committed in North Philadelphia in 2022</li>
+<li>User types a prompt asking how many people were arrested for aggravated assault in 2023 before submitting it. </li>
+<li>The website dynamically updates with information relating to the users requested prompt.</li>
+<li>The user decides to ask a more specific question about the number of aggravated assaults on St. Patrick's Day in 2023 and submits a new prompt.</li>
+<li>The website dynamically updates again with updated information about the number of aggravated assaults on St. Patrick's Day.</li>
 </ol>
 
 <h3>Use Case 3 - Finding a Farmers Market</h3>
 
-A new Philadelphia resident wants to find out informaiton about farmers markets in the city.
+A user wants to learn informaiton about farmer's markets in the city.
 <ol>
-<li>The user goes to the PhillyGPT website and inputs a prompt asking for information about the farmers markets.</li>
-<li>PhillyGPT provides the user with the names and locations about various Philadelphia farmer markets. </li>
-<li>The user then asks PhillyGPT about the time and date about a specific farmers market location.</li>
-<li>PhillyGPT provides the user with the date and time about the specific farmers market they want to visit.</li>  
+<li>The user types a prompt asking which farmers markets will happen the upcoming weekend and presses submit.</li>
+<li>The website dynamically updates and displays a table with all the farmers market this weekend. The table has information such as the name of the farmerks market, the location, and the time as well. </li>
+<li>Next to the table is a map which pinpoints the locations displayed in the table, across the city.</li>
+<li>The user zooms in on a particular farmers market location displayed on the map, and looks at the information in the table. The user decides to go visit this location.</li>  
 </ol>
 
 <h3>Use Case 4 - Location Analysis</h3>
