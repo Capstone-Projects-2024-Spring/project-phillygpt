@@ -10,14 +10,13 @@ PhillyGPT is a web application that provides data from SQL databases to users in
  A user enters a question into an input box and clicks ‘Submit’. OpenAI’s GPT 3.5 large language model (LLM) translates the question into a valid SQL query based on the databases we have cloned from the OpenDataPhilly program. After being processed, the answer to the user’s question is displayed in an easy to read format. The data may be displayed as a formatted table, a few sentences, or alongside a map. 
 
 ## Conceptual Design
-This project will have a web-based application architecture with respective frontend and a serverless backend. The frontend will be developed with Python Flask to create a responsive interface. 
+This project will have a web-based application architecture with respective frontend and a backend. The frontend will be developed with the React framework utilizing Javascript and Typescript where necessary to create a responsive interface. The backend will be implemented with Flask and written in Python.
 
-On the serverless backend (AWS Lambda) we will need to use Python to connect to one of OpenAI’s API’s to generate SQL queries based on user prompts. We can use an AWS EC2 instance to host the frontend. The serverless backend will construct an HTTP request with the SQL query and send it to Carto’s SQL API. 
+Both the frontend and the backend will be hosted on an AWS EC2 instance running Linux. Alongside the EC2 instance, there will be a MySQL server running utilizing AWS RDS service.
 
-Carto's will then retrieve the requested information from the database that contains the requested information and return it in JSON format. The EC2 instance will then use the data to display the results in the front-end. Error handling will also need to be considered for any queries that do not produce valid results. 
+Users will visit the website and enter a question into the search bar. Once they press enter the query is sent to the Flask backend where it will be properly processed. Then the request will be sent to OpenAI using its API for the  GPT 3.5 large language model, and a SQL statement will be generated. This will be returned as a JSON response and checked by the backend to ensure it is a valid SQL query for the respective database. 
 
-By integrating NLP with database management, this project seeks to provide data-driven answers to a wide array of queries about the city, ranging from demographic statistics to public service information
-
+If the query is not valid, then the user will be asked to enter a new question. On the other hand if the query is valid, then the query is executed on the MySQL server. Then the query results are sent to the frontend where they are tabularized or formatted and properly displayed. 
 
 ## Background
 There is a project called San Francisco GPT. They also have another demo called Census GPT. Both of these projects utilize the respective datasets for their specific domains. 
