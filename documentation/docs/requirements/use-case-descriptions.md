@@ -40,17 +40,6 @@ An urban planner wants to create a new green space in the city.
 <li>A table is shown that has relevant details about every green space such as their area and amenities.</li>
 </ol>
 
-<h3>Use Case 5 - Real Estate Analysis</h3>
-
-A real estate investor is looking for abandoned houses to buy and flip
-<ol>
-<li>They go to the PhillyGPT website and asks about abandoned houses for sale in the city</li>
-<li>A map is shown which pinpoints the properties.</li>
-<li>In a response box, there is a response saying “There are __ vacant properties for sale in the city”.</li>
-<li>The investor then asks about information about a vacant house at a certain address.</li>
-<li>A response is returned with information such as the cost, square footage, and time its been vacant.</li>
-</ol>
-
 <h3>Use Case 6 - Leisure Activities</h3>
 
 Tourists are visiting Philadelphia and want to know about landmarks.
