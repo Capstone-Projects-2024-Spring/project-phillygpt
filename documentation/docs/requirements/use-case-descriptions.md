@@ -1,16 +1,16 @@
 
 # Use Cases
 
-<h3>Use Case 1 - Number of Related Deaths</h3>
+<h3>Use Case 1 - Citizens in Philadelphia Vaccinated by Age</h3>
 
-A healthcare researcher wants to study affects of covid cases.
+A graduate student wants to do some COVID-19 research.
 <ol>
-<li>User loads the PhillyGPT website.</li>
-<li>User enters a prompt to ask the number of covid deaths.</li>
+<li>User enters a prompt to ask the number of Philadelphia citizens vaccinated aged 18-24.</li>
 <li>User submits the prompt.</li>
-<li>Based on the users response they get results related to the covid deaths query.</li>
-<li>A table is displayed showing the statistics of covid related deaths within Philadelphia.</li>
+<li>The website dynamically updates with information relating to the users requested prompt.</li>
+<li>A table is displayed showing the number of Philadelphia citizens aged 18-24 that are vaccinated against COVID-19 within Philadelphia.</li>
 </ol>
+
 <h3>Use Case 2 - Heat Map of Crime</h3>
 
 A user wants to find view a heat map of violent crime within North Philadelphia and do further research based on the result
