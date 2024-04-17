@@ -19,10 +19,11 @@ Users will visit the website and enter a question into the search bar. Once they
 If the query is not valid, then the user will be asked to enter a new question. On the other hand if the query is valid, then the query is executed on the MySQL server. Then the query results are sent to the frontend where they are tabularized or formatted and properly displayed. 
 
 ## Background
-There is a project called San Francisco GPT. They also have another demo called Census GPT. Both of these projects utilize the respective datasets for their specific domains. 
+There is a project called San Francisco GPT. They also have another demo called Census GPT. Both of these projects utilize the respective datasets for their specific domains. As it is, San Francisco GPT and Census GPT do not run any user generated requests as the project is abandoned. They only output a limited number of pre-recorded responses.
 
-Philly GPT will be a specialized adaptation of these projects using public datasets that pertain to Philadelphia. Philly GPT will not be a fork of the project, but will be simpler and light weight. 
+Aside from this, there are no similar projects for other cities. Philly GPT will be a specialized adaptation of these projects using public datasets that pertain to Philadelphia. Philly GPT will not be a fork of the project, but will be simpler with easy to read data formatting for users. 
 
-As it is, San Francisco GPT and Census GPT do not run any user generated requests as the project may be abandoned. They only output pre-recorded responses.
+OpenDataPhilly is a phenomenal resource that has very insightful metrics across many categories. Although the information is stored in large CSV and JSON files. If a user wanted to find specific information from OpenDataPhilly the process would be painstaking and time consuming. 
 
-OpenDataPhilly is also a phenomenal resource that has very insightful metrics across many categories. Although the information is stored in large CSV and JSON files. If a user wanted to find specific information from OpenDataPhilly the process would be painstaking and time consuming. With PhillyGPT the user can query the various databases with ease. Allowing them to find answers to their questions without having to page through hundreds of entities in a database.
+With PhillyGPT, the user can query the various databases with ease, and fewer steps. Allowing them to find answers to their questions without having to page through hundreds of entities in a database.
+
