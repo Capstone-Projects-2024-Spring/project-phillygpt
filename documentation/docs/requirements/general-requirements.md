@@ -9,7 +9,7 @@ sidebar_position: 3
 - Flask
 - AWS EC2
 - SQL
-- OpenAI GPT-3.5 or GPT-4 API
+- OpenAI GPT-3.5 API
 - HTML
 - CSS Tailwind
 - Carto’s SQL API
