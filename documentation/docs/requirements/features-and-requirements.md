@@ -7,7 +7,7 @@ sidebar_position: 4
 ## Functional Requirements
 - User Input
     - Users have the ability to input questions related to the city of Philadelphia and receive an accurate response.
-    - Must utilize NLP via OpenAI GPT-3.5 or GPT-4 API
+    - Must utilize NLP via OpenAI GPT-3.5 API
 
 - SQL Query Generation
     - Create database schemas
@@ -26,9 +26,15 @@ sidebar_position: 4
     - Result area must display the answers to the user's question and other data used to fetch from the API.
     
 - Mapping
-    - When a user asks a question, a map should appear and display the geographical data about their question.
+    - When a user asks a question, if the answer pertains, a map should appear and display the geographical data about their question.
+
+- Malicous SQL Queries
+    - Malicous SQL queries such as: "DELETE, DROP, TRUNCATE, UPDATE, INSERT, ALTER, CREATE" are not allowed.
+    - These malicous SQL queries need to be detected before execution to ensure data integrity in our databases.
+    
 - API Rate Limits
-    - Must implement an API rate limits to prevent API abuse.
+    - Must implement an API rate limit to prevent API abuse.
+    
 
 ## Nonfunctional Requirements
 - Ease of Navigation
