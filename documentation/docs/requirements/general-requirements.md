@@ -5,11 +5,17 @@ sidebar_position: 3
 # General Requirements
 
 - Access to the Internet
+- Linux
 - Python
 - Flask
 - AWS EC2
-- SQL
+- AWS RDS
+- MySQL
 - OpenAI GPT-3.5 API
-- HTML
 - CSS Tailwind
-- Carto’s SQL API
+- React
+- Javascript
+- Typescript
+- Google Maps API
+- Node.js
+
