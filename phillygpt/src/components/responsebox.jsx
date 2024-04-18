@@ -48,16 +48,6 @@ const ResponseBox = ({ responseSQL, resultSQL }) => {
           <p>{responseDataSQL ? parsedResponse.query : "Awaiting user input..."}</p>
         </div>
       </div>
-
-      {/* Display resultSQLData */}
-      <hr className={`${isDark ? 'border-white' : 'border-black'} my-4`} />
-      <div className="result-sql-section mb-4">
-        <h2 className="text-xl mb-2">Result SQL Data</h2>
-        <div className={`text-display ${isDark ? 'bg-darkgray' : 'bg-responsecodebox'} p-2 rounded-lg`}>
-          {/* Display resultSQLData here */}
-          <p>{resultSQL}</p>
-        </div>
-      </div>
     </div>
   );
 };
