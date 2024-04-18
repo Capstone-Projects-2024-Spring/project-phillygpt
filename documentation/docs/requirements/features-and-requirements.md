@@ -48,3 +48,5 @@ sidebar_position: 4
     - Ensure smooth integration between the OpenAI API the application.
 - Performance
     - Quick response times are necessary for query generation and data retrieval.
+- Dark Mode and Light Mode
+    - Dark mode and light mode ensure the application is pleasant to view.
