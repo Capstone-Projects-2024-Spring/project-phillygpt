@@ -31,16 +31,16 @@ A user wants to learn informaiton about farmer's markets in the city.
 <li>The user zooms in on a particular farmers market location displayed on the map, and looks at the information in the table. The user decides to go visit this location.</li>  
 </ol>
 
-<h3>Use Case 4 - Location Analysis</h3>
+<h3>Use Case 4 - Parks and Recreation</h3>
 
-An urban planner wants to create a new green space in the city.
+A user wants is curious about parks in the city.
 <ol>
-<li>They go to the PhillyGPT website and request analysis of the parks and green spaces around the city.</li>
-<li>A map is shown of all the green spaces highlighted throughout the city.</li>
-<li>A table is shown that has relevant details about every green space such as their area and amenities.</li>
+<li>The user types in a prompt asking which parks have the largest area and submits the prompt.</li>
+<li>The website dynamically updates and displays a table with the name of the parks, their location, and area in descending order.</li>
+<li>A map is shown next to the table, and the parks are pinpointed throughout the city.</li>
 </ol>
 
-<h3>Use Case 6 - Leisure Activities</h3>
+<h3>Use Case 5 - Leisure Activities</h3>
 
 Tourists are visiting Philadelphia and want to know about landmarks.
 <ol>
