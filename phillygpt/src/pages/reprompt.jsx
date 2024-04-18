@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Title from '../components/title';
 import SearchBar from '../components/searchbar';
 import CheckClass from '../components/DarkMode/checkClass';
+import SuggestionButton from '../components/suggestions';
 
 const RepromptPage = () => {
   const navigate = useNavigate();
@@ -22,15 +23,9 @@ const RepromptPage = () => {
           We're unable to find what you're looking for, here are some suggestions to improve your prompt.
         </div>
         {/* Render three suggestion buttons */}
-        <div className="suggestion-button w-full max-w-lg bg-blue-500 text-white py-2 px-4 rounded-lg mb-2 hover:bg-blue-600 cursor-pointer" onClick={() => handleButtonClick("Tell me about city landmarks")}>
-          Tell me about city landmarks
-        </div>
-        <div className="suggestion-button w-full max-w-lg bg-blue-500 text-white py-2 px-4 rounded-lg mb-2 hover:bg-blue-600 cursor-pointer" onClick={() => handleButtonClick("List out arrests made in Philadelphia")}>
-          List out arrests made in Philadelphia
-        </div>
-        <div className="suggestion-button w-full max-w-lg bg-blue-500 text-white py-2 px-4 rounded-lg mb-2 hover:bg-blue-600 cursor-pointer" onClick={() => handleButtonClick("EXAMPLE PROMPT")}>
-          EXAMPLE PROMPT
-        </div>
+        <SuggestionButton text="Tell me about city landmarks" onClick={() => handleButtonClick("Tell me about city landmarks")} />
+        <SuggestionButton text="List out arrests made in Philadelphia" onClick={() => handleButtonClick("List out arrests made in Philadelphia")} />
+        <SuggestionButton text="EXAMPLE PROMPT" onClick={() => handleButtonClick("EXAMPLE PROMPT")} />
       </div>
     </div>
   );
