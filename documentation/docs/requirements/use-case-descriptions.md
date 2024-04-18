@@ -35,17 +35,17 @@ A user wants to learn informaiton about farmer's markets in the city.
 
 A user wants is curious about parks in the city.
 <ol>
-<li>The user types in a prompt asking which parks have the largest area and submits the prompt.</li>
+<li>The user types in a prompt asking which parks have the largest area and then submits the prompt.</li>
 <li>The website dynamically updates and displays a table with the name of the parks, their location, and area in descending order.</li>
-<li>A map is shown next to the table, and the parks are pinpointed throughout the city.</li>
+<li>A map is shown next to the table, and the parks are marked throughout the city. The user pans around the map.</li>
 </ol>
 
-<h3>Use Case 5 - Leisure Activities</h3>
+<h3>Use Case 5 - Historical Landmarks</h3>
 
-Tourists are visiting Philadelphia and want to know about landmarks.
+A user visiting Philadelphia wants to know which landmarks to visit.
 <ol>
-<li>They go to the PhillyGPT website and ask where all the famous landmarks are.</li>
-<li>A map is returned pinpointing the top famous landmarks.</li>
-<li>A table is returned with information about the top famous landmarks, such as their physical location, name, and what makes them famous.</li>
+<li>The user types in a prompt asking about the famous landmarks in Philadelphia</li>
+<li>A table is displayed with information about the top famous landmarks. It shows information such as the landmarks' names, physical locations, and a description about its' importance.</li>
+<li>A map is displayed showing their locations.</li>
 </ol>
 
