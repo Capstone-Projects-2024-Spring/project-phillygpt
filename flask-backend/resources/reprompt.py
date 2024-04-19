@@ -20,7 +20,7 @@ class Reprompt(Resource):
     """
     def post(self):
         json_data = request.get_json()
-        user_input = json_data.get('user_input', '')
+        user_input = json_data.get('user_input')
 
         process_input = ProcessInput()
         table_name = process_input.determine_proper_table(user_input)
