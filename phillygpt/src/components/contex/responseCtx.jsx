@@ -8,7 +8,10 @@ export const ResponseProvider = ({ children }) => {
     const [repromptSuggestions, setRepromptSuggestions] = useState([]);
 
     return (
-        <responseCtx.Provider value={{ responseDataSQL, setResponseDataSQL, resultDataSQL, setResultDataSQL, repromptSuggestions, setRepromptSuggestions }}>
+        <responseCtx.Provider value={{
+            responseDataSQL, setResponseDataSQL,
+            resultDataSQL, setResultDataSQL,
+            repromptSuggestions, setRepromptSuggestions }}>
             {children}
         </responseCtx.Provider>
     );

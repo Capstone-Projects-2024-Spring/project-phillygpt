@@ -15,7 +15,8 @@ class Index(Resource):
         """
         return jsonify({"message" : "Welcome to the API.", 
                 "endpoints" : {
-                    "index" : "/",
-                    "process_input" : "/process_input"
+                    "index [method=GET]" : "/",
+                    "process_input [method=POST]" : "/process_input",
+                    "reprompt [method=POST]" : "/reprompt"
                 }})
         
