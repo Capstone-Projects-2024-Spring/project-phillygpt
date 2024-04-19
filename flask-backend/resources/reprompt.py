@@ -35,25 +35,23 @@ class Reprompt(Resource):
     def generate_reprompt_suggestions(self, user_input, table_name):
         suggestions = []
 
-        # Check if the table name exists in the schemas
         if table_name in schemas:
-            # Get the schema for the examined table
             table_schema = schemas[table_name]
 
-            # Extract keywords from the user input
-            keywords = user_input.lower().split()  # Split user input into individual words
+            #Extract keywords from the user input
+            keywords = user_input.lower().split()
 
-            # Iterate over the schema columns and check for keyword matches
+            #Iterate over the schema columns and check for keyword matches
             for column, data_type in table_schema.items():
-                # Check if any keyword matches the column name
+                #Check if any keyword matches the column name
                 for keyword in keywords:
                     if keyword.lower() in column.lower():
-                        # Generate a suggestion based on the matched keyword and column
+                        #Generate a suggestion based on the matched keyword and column
                         suggestion = f"Get data about {table_name.replace('_', ' ')} related to '{column}'"
                         suggestions.append(suggestion)
-                        break  # Break after finding the first match
+                        break #first match found
 
-        # If no relevant suggestions found based on keywords, generate suggestions based on schema
+        #no relevant suggestions found based on keywords, generate suggestions based on schema
         if not suggestions:
             # Generate unique suggestions based on schema
             unique_suggestions = set()
@@ -61,10 +59,10 @@ class Reprompt(Resource):
                 prompt = f"Get data about {table_name.replace('_', ' ')} related to '{column}'"
                 unique_suggestions.add(prompt)
 
-            # Add only 3 unique suggestions to the list
+            #Add only 3 unique suggestions to the list
             suggestions.extend(list(unique_suggestions)[:3])
 
-        # Refine the generated prompts
+        #Refine the generated prompts
         refined_suggestions = self.refine_prompts(suggestions)
         return refined_suggestions
 
