@@ -19,21 +19,6 @@ const SearchBar = () => {
     if (inputFromUrl) setUserInput(inputFromUrl);
   }, [location.search]);
 
-  useEffect(() => {
-    const fetchRepromptSuggestions = async () => {
-      try {
-        const response = await axios.post('http://127.0.0.1:5000/reprompt', { user_input: userInput });
-        setRepromptSuggestions(response.data.reprompt_suggestions);
-      } catch (error) {
-        console.error('Error fetching reprompt suggestions:', error);
-      }
-    };
-
-    if (userInput.trim() === 'ERROR') {
-      fetchRepromptSuggestions();
-    }
-  }, [userInput, setRepromptSuggestions]);
-
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   };
@@ -59,19 +44,30 @@ const SearchBar = () => {
             navigate(`/response?input=${encodeURIComponent(userInput)}`);
           } else {
             setStatus('An error occurred during processing.');
-            navigate('/reprompt')
+            axios.post('http://127.0.0.1:5000/reprompt', { user_input: userInput })
+              .then(response => {
+                console.log(response.data);
+                setRepromptSuggestions(response.data.reprompt_suggestions);
+                navigate('/reprompt');
+              })
+              .catch(error => {
+                console.error('Error fetching reprompt suggestions:', error);
+                setStatus('An error occurred during processing.');
+                navigate('/reprompt');
+              });
           }
         })
         .catch(error => {
           console.error('Error: ', error);
           setStatus('An error occurred during processing.');
-          navigate('/reprompt')
+          navigate('/reprompt');
         })
         .finally(() => {
           setLoading(false);
         });
     }
   };
+  
 
   return (
     <div className="flex justify-center items-center mb-4">
