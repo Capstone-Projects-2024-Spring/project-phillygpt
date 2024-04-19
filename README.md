@@ -38,16 +38,19 @@ With PhillyGPT, the user can query various databases with ease, and with fewer s
 
 
 ## Required Resources
+- Linux
 - Python
-- JavaScript
-- Node.js
-- SQL
+- Flask
 - AWS EC2
-- React
-- OpenAI’s GPT-3.5 or GPT-4 API
-- HTML
+- AWS RDS
+- MySQL
+- OpenAI GPT-3.5 API
 - CSS Tailwind
-- Carto’s SQL API
+- React
+- Javascript
+- Typescript
+- Google Maps API
+- Node.js
 
 ## Collaborators
 
