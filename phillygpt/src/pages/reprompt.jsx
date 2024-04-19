@@ -1,18 +1,25 @@
-// src/pages/reprompt.jsx
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Title from '../components/title';
 import SearchBar from '../components/searchbar';
 import CheckClass from '../components/DarkMode/checkClass';
 import SuggestionButton from '../components/suggestions';
+import { responseCtx } from '../components/contex/responseCtx';
+import { LoadingContext } from '../components/contex/loadingCtx';
+import Loading from '../components/loading';
 
 const RepromptPage = () => {
   const navigate = useNavigate();
   const isDark = CheckClass();
+  const { repromptSuggestions } = useContext(responseCtx);
+  const {isLoading, setLoading} = useContext(LoadingContext); 
 
   const handleButtonClick = (inputContent) => {
+    setLoading(true);
     navigate(`/?input=${encodeURIComponent(inputContent)}`);
+    setLoading(false);
   };
+  console.log(repromptSuggestions);
 
   return (
     <div>
@@ -22,10 +29,17 @@ const RepromptPage = () => {
         <div className={`text-${isDark ? 'white' : 'black'} text-center mb-4 font-lightbold`}>
           We're unable to find what you're looking for, here are some suggestions to improve your prompt.
         </div>
-        {/* Render three suggestion buttons */}
-        <SuggestionButton text="Tell me about city landmarks" onClick={() => handleButtonClick("Tell me about city landmarks")} />
-        <SuggestionButton text="List out arrests made in Philadelphia" onClick={() => handleButtonClick("List out arrests made in Philadelphia")} />
-        <SuggestionButton text="EXAMPLE PROMPT" onClick={() => handleButtonClick("EXAMPLE PROMPT")} />
+        
+        {isLoading ? (
+          <Loading />
+        ) : (repromptSuggestions.map((suggestion, index) => (
+            <SuggestionButton
+              key={index}
+              text={suggestion}
+              onClick={() => handleButtonClick(suggestion)}
+            />
+          ))
+        )}
       </div>
     </div>
   );
