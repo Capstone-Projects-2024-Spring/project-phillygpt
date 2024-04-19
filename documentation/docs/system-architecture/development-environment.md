@@ -35,3 +35,8 @@ sidebar_position: 4
 - **Google Maps API**  
   - Responsible for implementing map functionality on the home page.
 
+ ### Other Resources
+
+- **.Env File**
+  - A .env file will be necessary to store API keys and other secrets securely.
+
