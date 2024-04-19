@@ -1,64 +1,51 @@
 
 # Use Cases
 
-<h3>Use Case 1 - Number of Related Deaths</h3>
+<h3>Use Case 1 - Citizens in Philadelphia Vaccinated by Age</h3>
 
-A healthcare researcher wants to study affects of covid cases.
+A user wants to do research on COVID-19.
 <ol>
-<li>User loads the PhillyGPT website.</li>
-<li>User enters a prompt to ask the number of covid deaths.</li>
-<li>User submits the prompt.</li>
-<li>Based on the users response they get results related to the covid deaths query.</li>
-<li>A table is displayed showing the statistics of covid related deaths within Philadelphia.</li>
+<li>The user enters a prompt to ask the amount of Philadelphia citizens vaccinated by age group.</li>
+<li>The user submits the prompt.</li>
+<li>The website dynamically updates with information relating to the users requested prompt.</li>
+<li>A table is displayed showing the number of Philadelphia citizens that are vaccinated against COVID-19 within Philadelphia in respect to their age group.</li>
 </ol>
-<h3>Use Case 2 - Heat Map of Crime</h3>
 
-A user wants to find view a heat map of violent crime within North Philadelphia and do further research based on the result
+<h3>Use Case 2 - Citywide Arrests for Aggravated Assault</h3>
+
+A user wants to know how many people were arrested in 2023 for aggravated assault.
 <ol>
-<li>User loads the PhillyGPT website</li>
-<li>User enters a prompt to ask for a heat map of violent crimes in North Philadelphia</li>
-<li>User submits the prompt </li>
-<li>The website displays a map showing a heat map of violent crimes committed in North Philadelphia</li>
-<li>The user decides to refine the prompt for the heat map to only show violent crime within North Philadelphia only in 2022</li>
-<li>The website displays a heat map showing the number of violent crimes committed in North Philadelphia in 2022</li>
+<li>The user types a prompt asking how many people were arrested for aggravated assault in 2023 before submitting it. </li>
+<li>The website dynamically updates with a sentence displaying the number of aggravated assaults in 2023</li>
+<li>The user decides to ask a more specific question about the number of aggravated assaults on St. Patrick's Day in 2023 and submits a new prompt.</li>
+<li>The website dynamically updates again with updated information about the number of aggravated assaults on St. Patrick's Day.</li>
 </ol>
 
 <h3>Use Case 3 - Finding a Farmers Market</h3>
 
-A new Philadelphia resident wants to find out informaiton about farmers markets in the city.
+A user wants to learn about farmer's markets in the city.
 <ol>
-<li>The user goes to the PhillyGPT website and inputs a prompt asking for information about the farmers markets.</li>
-<li>PhillyGPT provides the user with the names and locations about various Philadelphia farmer markets. </li>
-<li>The user then asks PhillyGPT about the time and date about a specific farmers market location.</li>
-<li>PhillyGPT provides the user with the date and time about the specific farmers market they want to visit.</li>  
+<li>The user types a prompt asking which farmer's markets will happen the upcoming weekend and presses submit.</li>
+<li>The website dynamically updates and displays a table with all the farmer's markets this weekend. The table has information such as the name of the farmer's markets, the locations, and the times as well. </li>
+<li>Next to the table is a map which pinpoints the locations of the farmer's markets across the city.</li>
+<li>The user zooms in on a particular farmer's market location displayed on the map, and looks at the information in the table. The user decides to go visit this location.</li>  
 </ol>
 
-<h3>Use Case 4 - Location Analysis</h3>
+<h3>Use Case 4 - Parks and Recreation</h3>
 
-An urban planner wants to create a new green space in the city.
+A user wants is curious about parks in the city.
 <ol>
-<li>They go to the PhillyGPT website and request analysis of the parks and green spaces around the city.</li>
-<li>A map is shown of all the green spaces highlighted throughout the city.</li>
-<li>A table is shown that has relevant details about every green space such as their area and amenities.</li>
+<li>The user types in a prompt asking which parks have the largest area and then submits the prompt.</li>
+<li>The website dynamically updates and displays a table with the name of the parks, their locations, and area in descending order.</li>
+<li>A map is shown next to the table, and the parks are marked throughout the city. The user pans around the map.</li>
 </ol>
 
-<h3>Use Case 5 - Real Estate Analysis</h3>
+<h3>Use Case 5 - Historical Landmarks</h3>
 
-A real estate investor is looking for abandoned houses to buy and flip
+A user visiting Philadelphia wants to know which landmarks to visit.
 <ol>
-<li>They go to the PhillyGPT website and asks about abandoned houses for sale in the city</li>
-<li>A map is shown which pinpoints the properties.</li>
-<li>In a response box, there is a response saying “There are __ vacant properties for sale in the city”.</li>
-<li>The investor then asks about information about a vacant house at a certain address.</li>
-<li>A response is returned with information such as the cost, square footage, and time its been vacant.</li>
-</ol>
-
-<h3>Use Case 6 - Leisure Activities</h3>
-
-Tourists are visiting Philadelphia and want to know about landmarks.
-<ol>
-<li>They go to the PhillyGPT website and ask where all the famous landmarks are.</li>
-<li>A map is returned pinpointing the top famous landmarks.</li>
-<li>A table is returned with information about the top famous landmarks, such as their physical location, name, and what makes them famous.</li>
+<li>The user types in a prompt asking about famous landmarks located in Philadelphia.</li>
+<li>A table is displayed with information about the landmarks. The table shows information such as the landmarks' names, physical locations, and a description about their importance.</li>
+<li>A map is displayed showing their locations.</li>
 </ol>
 
