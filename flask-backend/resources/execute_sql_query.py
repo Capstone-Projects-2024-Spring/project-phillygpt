@@ -22,7 +22,7 @@ def execute_sql_query(sql_query):
             )
 
             if connection.is_connected():
-                cursor = connection.cursor()
+                cursor = connection.cursor(dictionary=True)
                 cursor.execute(sql_query)
                 result = cursor.fetchall()
                 connection.commit()
