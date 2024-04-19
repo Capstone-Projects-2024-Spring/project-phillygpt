@@ -63,7 +63,7 @@ class Reprompt(Resource):
             suggestions.extend(list(unique_suggestions)[:3])
 
         #Refine the generated prompts
-        refined_suggestions = self.refine_prompts(suggestions)
+        refined_suggestions = self.refine_prompts(suggestions[:3])
         return refined_suggestions
 
 
