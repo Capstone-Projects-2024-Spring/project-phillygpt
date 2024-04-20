@@ -9,8 +9,8 @@ const SearchBar = () => {
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState('');
   const { setLoading } = useContext(LoadingContext);
-  const { setResponseDataSQL, setResultDataSQL } = useContext(responseCtx);
-  const location = useLocation(); // Import useLocation hook
+  const { setResponseDataSQL, setResultDataSQL, setRepromptSuggestions } = useContext(responseCtx);
+  const location = useLocation();
 
   // Extract userInput from URL parameter when component mounts
   useEffect(() => {
@@ -44,19 +44,30 @@ const SearchBar = () => {
             navigate(`/response?input=${encodeURIComponent(userInput)}`);
           } else {
             setStatus('An error occurred during processing.');
-            navigate('/reprompt')
+            axios.post('http://127.0.0.1:5000/reprompt', { user_input: userInput })
+              .then(response => {
+                console.log(response.data);
+                setRepromptSuggestions(response.data.reprompt_suggestions);
+                navigate('/reprompt');
+              })
+              .catch(error => {
+                console.error('Error fetching reprompt suggestions:', error);
+                setStatus('An error occurred during processing.');
+                navigate('/reprompt');
+              });
           }
         })
         .catch(error => {
           console.error('Error: ', error);
           setStatus('An error occurred during processing.');
-          navigate('/reprompt')
+          navigate('/reprompt');
         })
         .finally(() => {
           setLoading(false);
         });
     }
   };
+  
 
   return (
     <div className="flex justify-center items-center mb-4">

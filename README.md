@@ -15,7 +15,6 @@ Section 02, Natural Language Processing, Databases, SQL, Node.js, Web Applicatio
 
 ## Project Abstract
 PhillyGPT is a web application that provides data from SQL databases to users in an easy to read format without having to write a single line of code. This application will provide easy access to information that may otherwise only be accessible with technological expertise. Our hosted databases contain information about public safety, food availability, education, and health. 
-
 A user types a question into an input box and submits their question. OpenAI’s GPT 3.5 large language model (LLM) translates the question into a valid SQL query based on the databases we have cloned from the OpenDataPhilly program. Then the query is executed in our databases. After being processed, the answer to the user’s question is displayed in an easy to read format. The data may be displayed as a formatted table, a few sentences, or alongside a map. 
 
 ## Conceptual Design
@@ -35,7 +34,6 @@ Aside from this, there are no similar projects for other cities around the world
 OpenDataPhilly is a phenomenal resource that has an abundance of data pertaining to the City of Philadelphia. All of this data could be useful to the city's residents, but the information is stored in large CSV and JSON files. This is not very accessible. If a user wanted to find specific information from OpenDataPhilly the process would be painstaking and time consuming. 
 
 With PhillyGPT, the user can query various databases with ease, and with fewer steps. Allowing them to find answers to their questions without having to page through thousands of entities in hundreds of databases.
-
 
 ## Required Resources
 - Linux
