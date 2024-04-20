@@ -7,7 +7,7 @@ import Loading from './loading.jsx';
 import { useContext } from 'react';
 import { LoadingContext } from './contex/loadingCtx.jsx';
 import { responseCtx } from './contex/responseCtx.jsx';
-import MapPage from './map/app.tsx';
+import MapPage from './map/app.jsx';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
