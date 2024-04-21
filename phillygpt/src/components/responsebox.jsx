@@ -7,7 +7,7 @@ const ResponseBox = ({ responseSQL, resultSQL }) => {
   const { responseDataSQL, resultDataSQL } = useContext(responseCtx); // Destructure resultDataSQL directly from context
 
   // Parse the JSON string into an object
-  const parsedResponse = JSON.parse(responseDataSQL);
+  const parsedResponse = responseDataSQL ? JSON.parse(responseDataSQL) : null ;
 
   return (
     <div className={`response-container w-1/2 h-full ${isDark ? 'bg-gray-navbar' : 'bg-responsebg'} rounded-lg border border-gray-400 p-4 ${isDark ? 'text-white' : 'text-black'}`}>
