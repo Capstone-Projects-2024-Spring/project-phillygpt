@@ -2,6 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { responseCtx } from '../contex/responseCtx';
 import { useContext } from 'react';
 
+//require('dotenv').config()
+
+
 import {
   useJsApiLoader,
   InfoWindow,
@@ -10,11 +13,6 @@ import {
   MarkerF,
 } from '@react-google-maps/api';
 
-interface marker {
-  longitude: number
-  latitude: number
-  text: string
-}
 
 const mapContainerStyle = {
   width: '900px',
@@ -27,20 +25,18 @@ const center = {
 };
 
 const createMarker = (record) => {
-  var latitude = record['Y'] ?? 91;
-  let longitude = record['X'] ?? 181;
-  let text = "Here is additional textional information about the record: " + JSON.stringify(record);
-  return {
-    longitude,
-    latitude,
-    text
-  } as marker;
+  let marker = {
+        latitude : record['Y'] ?? 91,
+        longitude : record['X'] ?? 181,
+        text : "Here is additional textional information about the record: " + JSON.stringify(record)
+  };
+  return marker
 };
 
 const MapPage = () => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyATW--vWST36NCIU7dsehSwd-9RNZhrSNg"
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
   })
 
   const [map, setMap] = React.useState(null)
@@ -77,7 +73,7 @@ const MapPage = () => {
 export default MapPage;
 
 
-const MarkerWithInfowindow = (props: { latitude: number; longitude: number; text: string }) => {
+const MarkerWithInfowindow = (props) => {
   const [infowindowOpen, setInfowindowOpen] = useState(false);
   const [activeMarker, setActiveMarker] = useState(null);
 
