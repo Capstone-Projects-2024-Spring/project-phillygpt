@@ -18,6 +18,7 @@ const DisplayArea = () => {
   const {isLoading, setLoading} = useContext(LoadingContext); 
   const {responseSQLData} = useContext(responseCtx);
   const {setResponseDataSQL} = useContext(responseCtx);
+  const {userInputQuery, setUserInputQuery} = useContext(responseCtx);
   const {resultSQLData} = useContext(responseCtx);
   const {setResultDataSQL} = useContext(responseCtx);
 
@@ -36,6 +37,7 @@ const DisplayArea = () => {
       });
       setResponseDataSQL(response.data.OPENAI_RESPONSE);
       setResultDataSQL(response.data.RESULT);
+      setUserInputQuery(response.data.USER_INPUT);
       setLoading(false);
       navigate(`/response?input=${encodeURIComponent(questionText)}`);
     }

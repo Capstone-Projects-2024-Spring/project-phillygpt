@@ -3,6 +3,7 @@ from flask import Flask
 from flask_restful import Api
 from resources.index import Index
 from resources.process_input import ProcessInput
+from resources.process_input_map import ProcessInputMap
 from resources.reprompt import Reprompt
 from flask_cors import CORS
 
@@ -13,6 +14,7 @@ api = Api(app)
 #API resource routes
 api.add_resource(Index, '/')
 api.add_resource(ProcessInput, '/process_input')
+api.add_resource(ProcessInputMap, '/process_input_map')
 api.add_resource(Reprompt, '/reprompt')
 
 if __name__ == "__main__":

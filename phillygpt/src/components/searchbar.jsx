@@ -10,6 +10,7 @@ const SearchBar = () => {
   const [userInput, setUserInput] = useState('');
   const { setLoading } = useContext(LoadingContext);
   const { setResponseDataSQL, setResultDataSQL, setRepromptSuggestions } = useContext(responseCtx);
+  const {userInputQuery, setUserInputQuery} = useContext(responseCtx);
   const location = useLocation();
 
   // Extract userInput from URL parameter when component mounts
@@ -41,6 +42,7 @@ const SearchBar = () => {
           if (response.data.status === "success") {
             setResponseDataSQL(response.data.OPENAI_RESPONSE);
             setResultDataSQL(response.data.RESULT);
+            setUserInputQuery(response.data.USER_INPUT);
             navigate(`/response?input=${encodeURIComponent(userInput)}`);
           } else {
             setStatus('An error occurred during processing.');
