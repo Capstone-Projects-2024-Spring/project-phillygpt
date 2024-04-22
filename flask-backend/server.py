@@ -16,6 +16,6 @@ api.add_resource(ProcessInput, '/process_input')
 api.add_resource(Reprompt, '/reprompt')
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run()
     #DEFAULT: http://localhost:5000/
 

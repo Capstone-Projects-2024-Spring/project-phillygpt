@@ -2,11 +2,12 @@ FROM node:21.1.0
 
 WORKDIR /app
 
-COPY phillygpt/package.json ./
+COPY package.json .
 
 RUN npm install
+RUN yarn install
 
-COPY phillygpt/ .
+COPY . .
 
 RUN npm run build
 
