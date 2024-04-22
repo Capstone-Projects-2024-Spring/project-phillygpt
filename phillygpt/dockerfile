@@ -1,0 +1,15 @@
+FROM node:21.1.0
+
+WORKDIR /app
+
+COPY phillygpt/package.json ./
+
+RUN npm install
+
+COPY phillygpt/ .
+
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "start"]

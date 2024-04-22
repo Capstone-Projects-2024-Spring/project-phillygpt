@@ -1,0 +1,18 @@
+FROM python: 3.11.4
+
+WORKDIR /app
+
+COPY flask-backend/requirements.txt .
+RUN python -m venv venv
+ENV PATH = "/app/venv/bin:$PATH"
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY flask-backend/ .
+
+EXPOSE 5000
+
+ENV FLASK_APP = server.py
+ENV FLASK_ENV = production
+
+CMD ["flask", "run", "--host=0.0.0.0"]
