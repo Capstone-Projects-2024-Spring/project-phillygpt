@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { responseCtx } from '../contex/responseCtx';
 import { useContext } from 'react';
+import axios from 'axios';
 
 //require('dotenv').config()
 
@@ -33,6 +34,8 @@ const createMarker = (record) => {
   return marker
 };
 
+
+
 const MapPage = () => {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -54,6 +57,7 @@ const MapPage = () => {
 
 
   const { responseDataSQL, resultDataSQL } = useContext(responseCtx); // Destructure resultDataSQL directly from context
+  const {userInputQuery} = useContext(responseCtx); 
   return isLoaded ? (
     <>
       <GoogleMap
@@ -63,7 +67,7 @@ const MapPage = () => {
         onUnmount={onUnmount}
       >
         <div>
-          {resultDataSQL?.map((createMarker)).map((marker) => <MarkerWithInfowindow longitude={marker.longitude} latitude={marker.latitude} text={marker.text} />)}
+          {resultDataSQL?.map((createMarker)).map((marker) => <MarkerWithInfowindow longitude={marker.longitude} latitude={marker.latitude} text={marker.text} user_input={userInputQuery} />)}
         </div>
       </GoogleMap>
     </>
@@ -74,19 +78,56 @@ export default MapPage;
 
 
 const MarkerWithInfowindow = (props) => {
+
+  
+
+  const [clickedOnce, setClickedOnce] = useState(false); // Flag to track clicks
+  const [myString, setMyString] = useState(props.text);
+
+  const handleClick = () => {
+    if (!clickedOnce) {
+      setInfowindowOpen(true); // Call the original onClick handler (e.g., open infowindow)
+      get_openai_summary(myString, props.user_input); // Set the text only on the first click
+      setClickedOnce(true); // Set the flag to prevent further text updates
+    }
+    else{
+      setInfowindowOpen(true);
+    }
+  };
+
+  const get_openai_summary = async (marker_text, user_input) => {
+    
+    try {
+      
+      const response = await axios.post('http://127.0.0.1:5000/process_input_map', {
+        user_input: user_input,
+        marker_text: marker_text,
+      });
+      setMyString(response.data.OPENAI_RESPONSE);
+      
+    }
+    catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  
+  
   const [infowindowOpen, setInfowindowOpen] = useState(false);
   const [activeMarker, setActiveMarker] = useState(null);
+  // const text = get_openai_summary(props.text);
+  
 
-  const handleActiveMarker = (marker) => {
-    if (marker === activeMarker) {
-      return;
-    }
-    setActiveMarker(marker);
-  };
+  // const handleActiveMarker = (marker) => {
+  //   if (marker === activeMarker) {
+  //     return;
+  //   }
+  //   setActiveMarker(marker);
+  // };
   return (
     <>
       <MarkerF
-        onClick={() => setInfowindowOpen(true)}
+        onClick={() => handleClick()}
         position={{ lat: props.latitude, lng: props.longitude }}
         title={'AdvancedMarker that opens an Infowindow when clicked.'}
       >
@@ -95,7 +136,7 @@ const MarkerWithInfowindow = (props) => {
           onCloseClick={() => setInfowindowOpen(false)
           }>
           <>
-            {props.text}
+            {myString}
           </>
         </InfoWindowF>)}
       </MarkerF>
