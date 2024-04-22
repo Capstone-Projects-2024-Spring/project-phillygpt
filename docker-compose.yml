@@ -1,0 +1,21 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./flask-backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+    env_file:
+      - .env
+
+  frontend:
+    build:
+      context: ./phillygpt
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
