@@ -1,4 +1,4 @@
-FROM python: 3.11.4
+FROM python:3.11.4
 
 WORKDIR /app
 
@@ -8,6 +8,7 @@ ENV PATH = "/app/venv/bin:$PATH"
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN powershell -Command "(Get-Location).Path; Get-ChildItem -Path (Get-Location).Path"
 COPY flask-backend/ .
 
 EXPOSE 5000
