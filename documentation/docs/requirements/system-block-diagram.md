@@ -9,6 +9,10 @@ sidebar_position: 2
 
 ##### Figure 1. High level design of PhillyGPT application.
 
-Figure 1 depicts the high-level design of PhillyGPT. They will be able to open the website (PhillyGPT) on their mobile device and will be able to enter a prompt. The front-end allowing the user to enter a prompt and view the results will be supported by the Flask Python Framework hosted on an AWS EC2 instance. There will be a AWS ELB load balancer distributing the load between EC2 instances in case of high website traffic. 
+Figure 1 illustrates the architecture of PhillyGPT. This project has a React frontend, where users can input prompts. These prompts are sent to a Flask backend server, which is responsible for handling the incoming data and interacting with both the OpenAI API and a MySQL database using AWS RDS (Relational Database Service)..
 
-Once the user enters and submits the prompt the AWS EC2 instance will trigger an AWS Lambda function to handle the prompt workflow as seen in the illustration above. Once the workflow finishes the EC2 instances receive back the requested data in JSON format and use it to render and display the information to the user in the front-end. 
+When a user submits a prompt through the React frontend, the Flask server receives this input and with the OpenAI API formulates a SQL query based on the user's input. The SQL query is then sent to the MySQL database hosted on AWS RDS.
+
+The database processes the SQL query and returns the results to the Flask server. The Flask server then sends this data back to the React frontend, which displays the results to the user.
+
+The entire project is hosted on an AWS EC2 (Elastic Compute Cloud) instance, which provides the necessary compute resources to run both the React frontend and the Flask backend server, as well as to communicate with the OpenAI API and RDS MySQL database. 
