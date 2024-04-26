@@ -17,8 +17,6 @@ A user wants to know how many people were arrested in 2023 for aggravated assaul
 <ol>
 <li>The user types a prompt asking how many people were arrested for aggravated assault in 2023 before submitting it. </li>
 <li>The website dynamically updates with a sentence displaying the number of aggravated assaults in 2023</li>
-<li>The user decides to ask a more specific question about the number of aggravated assaults on St. Patrick's Day in 2023 and submits a new prompt.</li>
-<li>The website dynamically updates again with updated information about the number of aggravated assaults on St. Patrick's Day.</li>
 </ol>
 
 <h3>Use Case 3 - Finding a Farmers Market</h3>
