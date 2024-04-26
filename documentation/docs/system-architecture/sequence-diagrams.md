@@ -12,7 +12,7 @@ A user wants to do research on COVID-19.
 </ol>
 
 
-![Use Case 1](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/1f036572-2cac-41c6-8e6e-551eac399c57)
+![UseCase1](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/9252a38f-7725-4631-9619-381a518a4068)
 
 <h3>Use Case 2 - Citywide Arrests for Aggravated Assault</h3>
 
