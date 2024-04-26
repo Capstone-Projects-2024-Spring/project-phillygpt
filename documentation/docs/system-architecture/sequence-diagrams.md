@@ -20,8 +20,6 @@ A user wants to know how many people were arrested in 2023 for aggravated assaul
 <ol>
 <li>The user types a prompt asking how many people were arrested for aggravated assault in 2023 before submitting it. </li>
 <li>The website dynamically updates with a sentence displaying the number of aggravated assaults in 2023</li>
-<li>The user decides to ask a more specific question about the number of aggravated assaults on St. Patrick's Day in 2023 and submits a new prompt.</li>
-<li>The website dynamically updates again with updated information about the number of aggravated assaults on St. Patrick's Day.</li>
 </ol>
 
 ![Use Case 2](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/b651f786-a01d-415f-b20c-c369d73c1d66)
