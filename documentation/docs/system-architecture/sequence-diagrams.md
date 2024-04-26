@@ -22,7 +22,8 @@ A user wants to know how many people were arrested in 2023 for aggravated assaul
 <li>The website dynamically updates with a sentence displaying the number of aggravated assaults in 2023</li>
 </ol>
 
-![Use Case 2](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/b651f786-a01d-415f-b20c-c369d73c1d66)
+![UseCase2](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/5e401f4e-d2f3-4e06-8aac-dd029c0e5073)
+
 
 <h3>Use Case 3 - Finding a Farmers Market</h3>
 
@@ -34,7 +35,8 @@ A user wants to learn about farmer's markets in the city.
 <li>The user zooms in on a particular farmer's market location displayed on the map, and looks at the information in the table. The user decides to go visit this location.</li>  
 </ol>
 
-![Use Case 3](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/263afd3f-ba09-4ab6-a6f8-bb44b362ad39)
+![UseCase3](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/990b36d5-96cf-4db5-998a-88481588074a)
+
 
 <h3>Use Case 4 - Parks and Recreation</h3>
 
@@ -46,7 +48,8 @@ A user wants is curious about parks in the city.
 </ol>
 
 
-![Use Case 4](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/d89d5cc1-c258-4351-ba71-51ea19670103)
+![UseCase4](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/98822e06-78a4-4db7-ab93-961eeec35008)
+
 
 <h3>Use Case 5 - Historical Landmarks</h3>
 
@@ -57,7 +60,7 @@ A user visiting Philadelphia wants to know which landmarks to visit.
 <li>A map is displayed showing their locations.</li>
 </ol>
 
-![Use Case 5](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/d8217765-235b-488c-80a8-436c4e8653ac)
+![UseCase5](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/54a9130c-c243-4fca-b5cc-98a597c430ed)
 
 
-![Use Case 6](https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/d028ff85-ba88-41f9-bdd0-24372f073add)
+
