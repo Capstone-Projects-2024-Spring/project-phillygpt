@@ -1,4 +1,6 @@
-
+---
+sidebar_position: 2
+---
 <h2>Sequence Diagrams for Use Cases</h2>
 
 <h3>Use Case 1 - Citizens in Philadelphia Vaccinated by Age</h3>
