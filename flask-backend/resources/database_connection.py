@@ -6,7 +6,7 @@ from sshtunnel import SSHTunnelForwarder
 
 load_dotenv()
 
-def get_database_uri():
+def execute_function_cursor(func, *args, **kwargs):
     """Constructs MySQL database URI and retrieves schema information"""
     ssh_host = os.getenv('SSH_HOST')
     ssh_port = int(os.getenv('SSH_PORT', 22))  # Default to port 22 if not specified
@@ -40,17 +40,21 @@ def get_database_uri():
                 uri = f'mysql://{mysql_username}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_db}'
                 cursor = connection.cursor()
                 
-                # Retrieve schema representation
-                schema_representation = get_schema_representation(cursor)
+                result = func(cursor,*args, **kwargs)
                 
                 cursor.close()
                 connection.close()
                 
-                return schema_representation
-
+                return result
+            
     except Error as e:
         print("Error connecting to MySQL database:", e)
         return None, None
+
+
+
+def get_database_uri():
+    return execute_function_cursor(get_schema_representation)
 
 def get_schema_representation(cursor):
     """ Get the database schema in a JSON-like format """
@@ -78,6 +82,16 @@ def get_schema_representation(cursor):
         db_schema[table_name] = column_details
     
     return db_schema
+
+
+def getField(fieldname, table_name):
+    return execute_function_cursor(execute_get_field, fieldname, table_name)
+
+def execute_get_field(cursor, fieldname, table_name):
+    cursor.execute(f"SELECT  {fieldname} FROM {table_name};")
+    addresses = [row[0] for row in cursor.fetchall()]
+    return addresses
+
 
 
 if __name__ == "__main__":

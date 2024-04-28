@@ -21,14 +21,14 @@ const mapContainerStyle = {
 };
 
 const center = {
-  lat: 39.9526, // default latitude for philadelphia
-  lng: -75.1652, // default longitude for philadelphia
+  lat: 39.952612, // default latitude for philadelphia
+  lng: -75.165212, // default longitude for philadelphia
 };
 
 const createMarker = (record) => {
   let marker = {
-        latitude : record['Y'] ?? 91,
-        longitude : record['X'] ?? 181,
+        latitude : record['Y'] ?? parseFloat(record['latitude']) ?? 91,
+        longitude : record['X'] ?? parseFloat(record['longitude']) ?? 181,
         text : "Here is additional textional information about the record: " + JSON.stringify(record)
   };
   return marker
