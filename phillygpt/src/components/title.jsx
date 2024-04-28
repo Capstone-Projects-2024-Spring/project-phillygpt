@@ -17,7 +17,8 @@ const Title = ({ route }) => {
       </Link>
       {showDescription && (
         <div className={`text-${isDark ? 'white' : 'black'} text-center mb-4`}>
-          A gateway to effortless data-driven insights about Philadelphia
+          Ask some questions regarding the following databases:
+          Bike Networks, City Landmarks, City Facilities, Citywide Arrests, COVID-19 Testing Sites, COVID Vaccine Totals, COVID Vaccines by Age, COVID Vaccines by Race, Covid Vaccines by Sex, COVID Vaccines by Zip, Farmers Markets Location, Incidents, Universities
         </div>
       )}
     </div>
