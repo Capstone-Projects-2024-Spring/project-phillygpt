@@ -1,61 +1,57 @@
 ---
 sidebar_position: 2
 ---
-# Integration tests
+# Integration Tests
 
 Tests to demonstrate each use-case based on the use-case descriptions and the sequence diagrams. External input should be provided via mock objects and results verified via mock objects. Integration tests should not require manual entry of data nor require manual interpretation of results.
 
-## Integration Test Documents for CityAnalytics Project
+## Integration Test Documents for PhillyGPT
 
-### Use Case 1 - Emergency Services Response Time
-**Description:** A city planner wants to analyze the efficiency of emergency services in urban and suburban areas.
-- **User Action:** User loads the CityAnalytics website.
-- **User Action:** User enters a prompt to ask for average response times of emergency services.
+### Use Case 1 - Citizens in Philadelphia Vaccinated by Age
+**Description:** A user wants to do research on COVID-19 vaccination rates by age group in Philadelphia.
+- **User Action:** User loads the PhillyGPT website.
+- **User Action:** User enters a prompt asking for the number of Philadelphia citizens vaccinated by age group.
 - **User Action:** User submits the prompt.
-- **Outcome:** Based on the user's response, they get results related to average emergency response times.
-- **Outcome:** A graph is displayed showing the comparison of response times between urban and suburban areas.
+- **Outcome:** The website updates dynamically and displays a table showing vaccination rates by age group in Philadelphia.
+- **Outcome:** The user can view detailed age-wise vaccination statistics.
 
-**Assertion:** User should be able to receive detailed analytics on emergency services' response times to assess and improve city planning and safety measures.
+**Assertion:** User should be able to obtain accurate and detailed vaccination data by age group to assist in research or decision-making.
 
-### Use Case 2 - Public Transport Usage
-**Description:** A transportation official wants to understand public transport usage patterns to improve services.
-- **User Action:** User loads the CityAnalytics website.
-- **User Action:** User enters a prompt to request data on public transport usage.
+### Use Case 2 - Citywide Arrests for Aggravated Assault
+**Description:** A user wants to know about the arrests for aggravated assault in Philadelphia for the year 2023.
+- **User Action:** User loads the PhillyGPT website.
+- **User Action:** User enters a prompt asking how many people were arrested for aggravated assault in 2023.
 - **User Action:** User submits the prompt.
-- **Outcome:** The website displays charts and graphs showing public transport usage trends over time.
-- **User Action:** User filters the data to show pre and post-pandemic usage trends.
-- **Outcome:** The website updates the display to show the requested comparison.
+- **Outcome:** The website updates with a sentence displaying the number of aggravated assaults in 2023.
 
-**Assertion:** User should be able to explore public transport usage trends to make informed decisions on service improvements and expansions.
+**Assertion:** User should be able to receive updated and precise data on crime statistics to enhance public awareness and safety planning.
 
-### Use Case 3 - Pollution Levels Analysis
-**Description:** An environmental scientist wants to study the patterns of air pollution across different city districts.
-- **User Action:** The scientist visits the CityAnalytics website and inputs a prompt asking for air quality data.
-- **Outcome:** The website provides a visual representation, such as heatmaps, of air pollution levels across the city.
-- **Outcome:** Using this data, the scientist can identify pollution hotspots and trends over time.
+### Use Case 3 - Finding a Farmers Market
+**Description:** A user wants to find information on farmer's markets happening in Philadelphia over the upcoming weekend.
+- **User Action:** User loads the PhillyGPT website.
+- **User Action:** User enters a prompt to find this weekend's farmer's markets.
+- **User Action:** User submits the prompt.
+- **Outcome:** The website displays a table with information about each market, including names, locations, and times.
+- **Outcome:** A map pinpoints the locations of these markets, aiding the user in planning their visits.
 
-**Assertion:** User should be able to obtain and analyze detailed environmental data to address pollution concerns effectively.
+**Assertion:** User should be able to discover local farmer's markets efficiently and plan their weekend shopping accordingly.
 
-### Use Case 4 - Urban Development Impact Assessment
-**Description:** A developer wants to assess the impact of a new housing complex on local infrastructure.
-- **User Action:** They navigate to the CityAnalytics website and request information on current infrastructure load and capacities.
-- **Outcome:** A dashboard is displayed showing the infrastructure status, including roads, public utilities, and services.
-- **Outcome:** Interactive tools allow the user to simulate the impact of new developments on existing infrastructure.
+### Use Case 4 - Parks and Recreation
+**Description:** A user is curious about the largest parks in Philadelphia.
+- **User Action:** User loads the PhillyGPT website.
+- **User Action:** User enters a prompt asking for parks with the largest area.
+- **User Action:** User submits the prompt.
+- **Outcome:** A table is displayed with parks sorted by area in descending order.
+- **Outcome:** A map shows the locations of these parks, allowing the user to explore different options visually.
 
-**Assertion:** User should be able to simulate and assess the potential impacts of new developments on city infrastructure to plan effectively.
+**Assertion:** User should be able to explore and compare park areas for recreational planning or research purposes.
 
-### Use Case 5 - Educational Facilities Allocation
-**Description:** An education department official wants to optimize the allocation of educational facilities.
-- **User Action:** The official accesses the CityAnalytics website and queries the distribution of educational facilities across the city.
-- **Outcome:** The website displays a map highlighting the locations of schools, colleges, and universities.
-- **Outcome:** Data on student populations, facility capacities, and area demographics are provided to aid in decision-making.
+### Use Case 5 - Historical Landmarks
+**Description:** A user visiting Philadelphia wants to learn about significant historical landmarks.
+- **User Action:** User loads the PhillyGPT website.
+- **User Action:** User enters a prompt asking about famous landmarks in Philadelphia.
+- **User Action:** User submits the prompt.
+- **Outcome:** The website displays a table with names, locations, and descriptions of historical landmarks.
+- **Outcome:** A map shows their locations, facilitating visit planning.
 
-**Assertion:** User should be able to analyze educational facility allocations and demographics to identify areas of improvement or need for new facilities.
-
-### Use Case 6 - Historical Landmark Preservation
-**Description:** A historian wants to propose a preservation plan for historical landmarks facing urban development threats.
-- **User Action:** They visit the CityAnalytics website and input a prompt for a list of endangered historical landmarks.
-- **Outcome:** The website returns a map and list of landmarks with details on their historical significance and current threats.
-- **Outcome:** The historian uses this information to advocate for preservation measures and funding.
-
-**Assertion:** User should be able to access detailed information on historical landmarks to support preservation efforts effectively.
+**Assertion:** User should be able to access comprehensive information on historical landmarks to enrich their visit experience or educational research.

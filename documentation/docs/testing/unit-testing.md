@@ -1,6 +1,3 @@
----
-sidebar_position: 1
----
 # Unit Tests
 Tests are automated by GitHub Actions on every pull request to the main branch.
 ## RESTFul API Endpoint Tests
@@ -16,13 +13,21 @@ Creates a client to run Flask tests
 test_get_endpoints(client)
 `
 - Assertions:
-    - HTTP response status of 200 for sucessful request
+    - HTTP response status of 200 for successful request
     - message and endpoints are present in the data
 
-##### Test: POST HTTP request to RESTFul API for processing user input.
+##### Test: POST HTTP request to RESTFul API for processing valid user input.
 `
 test_post_user_input(client)
 `
 - Assertions:
-    - HTTP response status of 200 for sucessful request
-    - Successful response of JSON data that includes user input and the response from OpenAI.
+    - HTTP response status of 200 for successful request
+    - JSON data includes 'message' and 'status'
+
+##### Test: POST HTTP request to RESTFul API for reprompt suggestions.
+`
+test_reprompt_post(client)
+`
+- Assertions:
+    - HTTP response status of 200 for successful request
+    - JSON data includes 'reprompt_suggestions', which contains more than one suggestion
