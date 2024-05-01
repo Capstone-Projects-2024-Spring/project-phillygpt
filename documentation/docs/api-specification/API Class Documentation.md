@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# API Classes
+# Backend API Useage
 
 Here are the API's we created and implemented for use in our backend.
 
