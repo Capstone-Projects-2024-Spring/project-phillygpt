@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # System Block Diagram
 
-<img width="646" alt="PhillyGPT Block Diagram" src="https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/791c693d-f465-496a-a282-9f21391c6770">
+<img width="646" alt="PhillyGPT Block Diagram" src="https://github.com/Capstone-Projects-2024-Spring/project-phillygpt/assets/76089708/791c693d-f465-496a-a282-9f21391c6770" />
 
 
 ##### Figure 1. High level design of PhillyGPT application.
