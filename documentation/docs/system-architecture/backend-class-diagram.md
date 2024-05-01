@@ -4,7 +4,7 @@ sidebar_position: 5
 # Backend Class Diagram
 
 
-![Database Diagram](https://www.mermaidchart.com/raw/7eb95f12-1886-496e-9d4f-ffad9fbf2619?theme=light&version=v0.1&format=svg)
+![Backend Diagram](https://www.mermaidchart.com/raw/7eb95f12-1886-496e-9d4f-ffad9fbf2619?theme=light&version=v0.1&format=svg)
 
 ## Classes and Descriptions
 
